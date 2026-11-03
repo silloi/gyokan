@@ -1,0 +1,13 @@
+# ローカル開発用の環境変数。`cp .dev.vars.example .dev.vars` して値を入れる（.dev.vars は git に入れない）
+
+# Claude API キー。未設定でも動くが、その場合は同梱の fixture・取り込んだ補足・キャッシュ済みの補足しか表示できない
+ANTHROPIC_API_KEY=
+
+# 取得できるサイト（"*" はすべての公開サイト）
+ALLOWED_HOSTS=*
+
+# ローカルではデモページ（http://localhost:5173/demo/...）も取得できるようにする
+ALLOW_PRIVATE_HOSTS=1
+
+# 開発用の API（/api/dev/import: 補足を KV に取り込む）を有効にする
+DEV_TOOLS=1

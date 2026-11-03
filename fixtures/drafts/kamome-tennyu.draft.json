@@ -1,0 +1,568 @@
+{
+  "source": "public/demo/kamome-tennyu.html",
+  "url": "/demo/kamome-tennyu.html",
+  "generator": {
+    "kind": "claude-code-session",
+    "promptVersion": "2026-11-02.1",
+    "note": "Claude API キーの無い開発環境で、Claude Code（開発セッション）が shared/prompts.ts の SYSTEM_PROMPT とレベル別の指示に沿って下書きし、validate.ts で検証したもの。API で生成した結果ではない。対象は架空のページ。"
+  },
+  "notes": {
+    "1": [
+      {
+        "sentenceId": "s1",
+        "anchor": "転入届",
+        "reading": "てんにゅうとどけ",
+        "text": "引っ越してきたことを区に知らせる書類"
+      },
+      {
+        "sentenceId": "s1",
+        "anchor": "市区町村",
+        "reading": "しくちょうそん",
+        "text": "市や区や町や村のこと"
+      },
+      { "sentenceId": "s2", "anchor": "提出", "reading": "ていしゅつ", "text": "書類を出すこと" },
+      {
+        "sentenceId": "s3",
+        "anchor": "届け出て",
+        "reading": "とどけでて",
+        "text": "役所に書類を出して、しらせて"
+      },
+      {
+        "sentenceId": "s4",
+        "anchor": "正当な理由",
+        "reading": "せいとうなりゆう",
+        "text": "みんなが納得できる、ちゃんとした理由"
+      },
+      {
+        "sentenceId": "s4",
+        "anchor": "過料",
+        "reading": "かりょう",
+        "text": "決まりを守らないときに払うお金",
+        "detail": "「罰金」とはちがい、犯罪の記録にはなりません。"
+      },
+      {
+        "sentenceId": "s4",
+        "anchor": "科される",
+        "reading": "かされる",
+        "text": "払うように決められる"
+      },
+      {
+        "sentenceId": "s8",
+        "anchor": "又は",
+        "reading": "または",
+        "text": "「AかB」の「か」と同じ意味"
+      },
+      {
+        "sentenceId": "s8",
+        "anchor": "世帯",
+        "reading": "せたい",
+        "text": "いっしょに住んで生活している家族など"
+      },
+      {
+        "sentenceId": "s9",
+        "anchor": "委任状",
+        "reading": "いにんじょう",
+        "text": "ほかの人に手続きをたのむための書類"
+      },
+      {
+        "sentenceId": "s10",
+        "anchor": "自署",
+        "reading": "じしょ",
+        "text": "じぶんで名前を書くこと"
+      },
+      {
+        "sentenceId": "s12",
+        "anchor": "転出証明書",
+        "reading": "てんしゅつしょうめいしょ",
+        "text": "前の住所から出たことを、しめす書類"
+      },
+      {
+        "sentenceId": "s12",
+        "anchor": "交付",
+        "reading": "こうふ",
+        "text": "役所が書類をわたすこと"
+      },
+      {
+        "sentenceId": "s12",
+        "anchor": "転出届",
+        "reading": "てんしゅつとどけ",
+        "text": "引っ越して出ていくときに出す書類"
+      },
+      { "sentenceId": "s13", "anchor": "不要", "reading": "ふよう", "text": "いらない" },
+      {
+        "sentenceId": "s14",
+        "anchor": "本人確認書類",
+        "reading": "ほんにんかくにんしょるい",
+        "text": "自分がだれかを、しめすカードや書類"
+      },
+      {
+        "sentenceId": "s16",
+        "anchor": "代理人",
+        "reading": "だいりにん",
+        "text": "本人の代わりに手続きをする人"
+      },
+      {
+        "sentenceId": "s17",
+        "anchor": "外国籍",
+        "reading": "がいこくせき",
+        "text": "日本ではない国の、国籍があること"
+      },
+      {
+        "sentenceId": "s17",
+        "anchor": "特別永住者証明書",
+        "reading": "とくべつえいじゅうしゃしょうめいしょ",
+        "text": "「特別永住者」の人が持つカード"
+      },
+      { "sentenceId": "s18", "anchor": "提示", "reading": "ていじ", "text": "見せること" },
+      {
+        "sentenceId": "s21",
+        "anchor": "本庁舎",
+        "reading": "ほんちょうしゃ",
+        "text": "区役所のいちばん大きなたてもの"
+      },
+      {
+        "sentenceId": "s21",
+        "anchor": "住民記録係",
+        "reading": "じゅうみんきろくがかり",
+        "text": "住所のことをあつかう窓口"
+      },
+      {
+        "sentenceId": "s22",
+        "anchor": "出張所",
+        "reading": "しゅっちょうじょ",
+        "text": "ほかの場所にある、小さな区役所"
+      },
+      {
+        "sentenceId": "s23",
+        "anchor": "取扱い",
+        "reading": "とりあつかい",
+        "text": "手続きを受け付けること"
+      },
+      {
+        "sentenceId": "s25",
+        "anchor": "年末年始",
+        "reading": "ねんまつねんし",
+        "text": "12月の終わりから1月の初めまで"
+      },
+      { "sentenceId": "s26", "anchor": "正午", "reading": "しょうご", "text": "昼の12時" },
+      { "sentenceId": "s26", "anchor": "開設", "reading": "かいせつ", "text": "窓口を開くこと" },
+      {
+        "sentenceId": "s27",
+        "anchor": "自治体",
+        "reading": "じちたい",
+        "text": "市や区や町や村など"
+      },
+      {
+        "sentenceId": "s27",
+        "anchor": "後日改めて",
+        "reading": "ごじつあらためて",
+        "text": "別の日に、もう一度"
+      },
+      {
+        "sentenceId": "s29",
+        "anchor": "下旬",
+        "reading": "げじゅん",
+        "text": "その月の21日から終わりまで"
+      },
+      {
+        "sentenceId": "s29",
+        "anchor": "上旬",
+        "reading": "じょうじゅん",
+        "text": "その月の1日から10日まで"
+      },
+      {
+        "sentenceId": "s29",
+        "anchor": "混雑",
+        "reading": "こんざつ",
+        "text": "人がとても多く、こむこと"
+      },
+      {
+        "sentenceId": "s31",
+        "anchor": "受付終了時刻間際",
+        "reading": "うけつけしゅうりょうじこくまぎわ",
+        "text": "受付がおわる時間の、すぐ前"
+      },
+      {
+        "sentenceId": "s31",
+        "anchor": "ご来庁",
+        "reading": "ごらいちょう",
+        "text": "役所に来ること"
+      },
+      {
+        "sentenceId": "s32",
+        "anchor": "行って",
+        "reading": "おこなって",
+        "text": "（手続きを）して。「行く」ではない"
+      },
+      {
+        "sentenceId": "s35",
+        "anchor": "該当する",
+        "reading": "がいとうする",
+        "text": "あてはまる"
+      },
+      {
+        "sentenceId": "s36",
+        "anchor": "勤務先",
+        "reading": "きんむさき",
+        "text": "働いている会社など"
+      },
+      {
+        "sentenceId": "s37",
+        "anchor": "厚生年金",
+        "reading": "こうせいねんきん",
+        "text": "会社員などが入る年金"
+      },
+      {
+        "sentenceId": "s38",
+        "anchor": "児童手当",
+        "reading": "じどうてあて",
+        "text": "子どもを育てる人がもらえるお金"
+      },
+      {
+        "sentenceId": "s38",
+        "anchor": "養育",
+        "reading": "よういく",
+        "text": "子どもを育てること"
+      },
+      {
+        "sentenceId": "s39",
+        "anchor": "転入学",
+        "reading": "てんにゅうがく",
+        "text": "ほかの学校から移って入ること"
+      },
+      {
+        "sentenceId": "s40",
+        "anchor": "印鑑登録",
+        "reading": "いんかんとうろく",
+        "text": "はんこを役所に登録すること"
+      }
+    ],
+    "2": [
+      {
+        "sentenceId": "s3",
+        "anchor": "届け出てください",
+        "text": "「お願い」の形ですが、かならずすることです。",
+        "detail": "前の文に「必要です」とあり、遅れると「過料」もあるので、しなければならないことです。",
+        "evidence": [
+          { "sentenceId": "s2", "quote": "転入届の提出が必要です" },
+          { "sentenceId": "s4", "quote": "過料が科されることがあります" }
+        ]
+      },
+      {
+        "sentenceId": "s4",
+        "anchor": "科されることがあります",
+        "text": "かならずではありませんが、本当にお金を払うことになる場合があります。",
+        "confidence": "medium"
+      },
+      {
+        "sentenceId": "s4",
+        "anchor": "ご注意ください",
+        "text": "「気をつけて」という意味です。ここでは「遅れないで」という強い注意です。",
+        "evidence": [{ "sentenceId": "s4", "quote": "届出が遅れた場合は" }]
+      },
+      {
+        "sentenceId": "s10",
+        "anchor": "原則として",
+        "text": "ほとんどの場合、こうします。例外はとても少ないです。",
+        "detail": "例外があるかどうかは、窓口で聞かないと分かりません。自分は例外だと思わずに、このとおり準備しましょう。"
+      },
+      {
+        "sentenceId": "s10",
+        "anchor": "に限ります",
+        "text": "これ以外はだめ、という意味です。本人が自分で書いた委任状だけが使えます。"
+      },
+      { "sentenceId": "s14", "anchor": "来られる方", "text": "「来る人」のていねいな言い方です。" },
+      {
+        "sentenceId": "s15",
+        "anchor": "お持ちの方のみ",
+        "text": "持っている人だけ、という意味です。持っていない人は、なくても大丈夫です。"
+      },
+      {
+        "sentenceId": "s17",
+        "anchor": "お持ちください",
+        "text": "「持ってきてください」という意味です。かならず持っていきます。"
+      },
+      {
+        "sentenceId": "s18",
+        "anchor": "必要に応じて",
+        "text": "必要なときだけ、という意味です。人によって、ほかの書類がいることがあります。",
+        "detail": "何がいるかは、窓口で言われるまで分からないことがあります。心配なら、行く前に電話で聞きましょう。"
+      },
+      {
+        "sentenceId": "s18",
+        "anchor": "お願いすることがあります",
+        "text": "「見せてください」と言われることがある、という意味です。"
+      },
+      {
+        "sentenceId": "s23",
+        "anchor": "ただし",
+        "text": "前の文の例外を言う言葉です。このあとに大事なことが書いてあることが多いです。",
+        "grounding": "general"
+      },
+      {
+        "sentenceId": "s23",
+        "anchor": "本庁舎のみの取扱いとなります",
+        "text": "本庁舎でしかできない、という意味です。出張所ではできません。",
+        "evidence": [{ "sentenceId": "s23", "quote": "一部の手続きは本庁舎のみの取扱いとなります" }]
+      },
+      {
+        "sentenceId": "s27",
+        "anchor": "後日改めてお越しいただく場合があります",
+        "text": "その日に終わらず、別の日にもう一度来ることになるかもしれない、という意味です。"
+      },
+      {
+        "sentenceId": "s29",
+        "anchor": "お待ちいただくことがあります",
+        "text": "長い時間、待つことになるかもしれない、という意味です。"
+      },
+      {
+        "sentenceId": "s30",
+        "anchor": "お早めにお済ませください",
+        "text": "できるだけ早く手続きをしてください、という意味です。",
+        "detail": "混む時期の前や、期限よりかなり前に行くのがよい、ということです。",
+        "evidence": [
+          { "sentenceId": "s30", "quote": "お早めにお済ませください" },
+          { "sentenceId": "s29", "quote": "窓口が大変混雑し" }
+        ]
+      },
+      {
+        "sentenceId": "s31",
+        "anchor": "ご遠慮ください",
+        "text": "「しないでください」という意味です。お願いの形ですが、実際は禁止です。"
+      },
+      {
+        "sentenceId": "s35",
+        "anchor": "該当する方は",
+        "text": "あてはまる人だけ、という意味です。全員ではありません。"
+      }
+    ],
+    "3": [
+      {
+        "sentenceId": "s2",
+        "text": "引っ越してきたら、かもめ区役所に転入届を出す必要があります。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s2", "quote": "転入届の提出が必要です" }]
+      },
+      {
+        "sentenceId": "s3",
+        "text": "住みはじめた日から、14日以内に出します。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s3", "quote": "14日以内に届け出てください" }]
+      },
+      {
+        "sentenceId": "s4",
+        "text": "期限に遅れると、お金を払うことになるかもしれません。",
+        "force": "info",
+        "evidence": [{ "sentenceId": "s4", "quote": "過料が科されることがあります" }]
+      },
+      {
+        "sentenceId": "s6",
+        "text": "引っ越す前には出せません。住み始めてから出します。",
+        "force": "must_not",
+        "evidence": [{ "sentenceId": "s6", "quote": "引っ越しの前には届け出ることができません" }]
+      },
+      {
+        "sentenceId": "s8",
+        "text": "届けを出せるのは、本人か、いっしょに住む家族などです。",
+        "force": "info",
+        "evidence": [{ "sentenceId": "s8", "quote": "本人又は同じ世帯の方" }]
+      },
+      {
+        "sentenceId": "s9",
+        "text": "ほかの人に行ってもらうときは、委任状が必要です。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s9", "quote": "委任状が必要です" }]
+      },
+      {
+        "sentenceId": "s10",
+        "text": "委任状は、たのむ本人が自分で名前を書いたものを使います。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s10", "quote": "本人が自署したものに限ります" }]
+      },
+      {
+        "sentenceId": "s12",
+        "text": "前の住所の役所でもらった「転出証明書」を、持っていきます。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s12", "quote": "転出証明書" }]
+      },
+      {
+        "sentenceId": "s13",
+        "text": "マイナンバーカードで転出届をした人は、転出証明書はいりません。",
+        "force": "info",
+        "evidence": [
+          { "sentenceId": "s13", "quote": "マイナンバーカードを利用して転出届をした方は不要です" }
+        ]
+      },
+      {
+        "sentenceId": "s14",
+        "text": "窓口に行く人の、在留カードなどを持っていきます。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s14", "quote": "届出に来られる方の本人確認書類" }]
+      },
+      {
+        "sentenceId": "s15",
+        "text": "マイナンバーカードがある人は、家族全員の分を持っていきます。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s15", "quote": "転入される方全員のマイナンバーカード" }]
+      },
+      {
+        "sentenceId": "s17",
+        "text": "外国籍の人は、家族みんなの在留カードを持っていきます。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s17", "quote": "転入される方全員の在留カード" }]
+      },
+      {
+        "sentenceId": "s18",
+        "text": "人によっては、ほかの書類も見せるように言われます。",
+        "force": "info",
+        "evidence": [{ "sentenceId": "s18", "quote": "ほかの書類の提示をお願いすることがあります" }]
+      },
+      {
+        "sentenceId": "s22",
+        "text": "近くの出張所でもできますが、本庁舎でしかできない手続きもあります。",
+        "force": "info",
+        "evidence": [
+          { "sentenceId": "s22", "quote": "各出張所でも受け付けています" },
+          { "sentenceId": "s23", "quote": "本庁舎のみの取扱い" }
+        ]
+      },
+      {
+        "sentenceId": "s25",
+        "text": "あいているのは、平日の朝8時半から夕方5時までです。土日と祝日は休みです。",
+        "force": "info",
+        "evidence": [{ "sentenceId": "s25", "quote": "平日 午前8時30分から午後5時まで" }]
+      },
+      {
+        "sentenceId": "s26",
+        "text": "第2・第4の土曜日は、お昼まで本庁舎があいています。",
+        "force": "info",
+        "evidence": [{ "sentenceId": "s26", "quote": "毎月第2・第4土曜日の午前9時から正午まで" }]
+      },
+      {
+        "sentenceId": "s27",
+        "text": "土曜日には、その日に終わらない手続きもあります。",
+        "force": "info",
+        "evidence": [{ "sentenceId": "s27", "quote": "後日改めてお越しいただく場合があります" }]
+      },
+      {
+        "sentenceId": "s30",
+        "text": "混む3月・4月をさけて、早めに行くのがよいです。",
+        "force": "should",
+        "evidence": [
+          { "sentenceId": "s29", "quote": "3月下旬から4月上旬は窓口が大変混雑し" },
+          { "sentenceId": "s30", "quote": "お早めにお済ませください" }
+        ]
+      },
+      {
+        "sentenceId": "s31",
+        "text": "受付が終わる時間の直前には、行かないでください。",
+        "force": "must_not",
+        "evidence": [{ "sentenceId": "s31", "quote": "受付終了時刻間際のご来庁はご遠慮ください" }]
+      },
+      {
+        "sentenceId": "s32",
+        "text": "転入届と同じ日に、マイナンバーカードの住所も変えます。しないと、使えなくなることがあります。",
+        "force": "must",
+        "evidence": [
+          { "sentenceId": "s32", "quote": "転入届と同時にカードの住所変更の手続き" },
+          { "sentenceId": "s33", "quote": "カードが使えなくなることがあります" }
+        ]
+      },
+      {
+        "sentenceId": "s35",
+        "text": "このあと、自分にあてはまる手続きもします。",
+        "force": "must",
+        "evidence": [{ "sentenceId": "s35", "quote": "該当する方は次の手続きも行ってください" }]
+      }
+    ],
+    "4": [
+      {
+        "sentenceId": "s25",
+        "text": "平日の昼しか開いていないので、仕事を休む必要があることが多いです。",
+        "detail": "第2・第4土曜日の休日窓口も使えます。ただし、土曜日にはできない手続きもあります。",
+        "grounding": "page",
+        "confidence": "medium",
+        "evidence": [
+          { "sentenceId": "s25", "quote": "平日 午前8時30分から午後5時まで" },
+          { "sentenceId": "s27", "quote": "後日改めてお越しいただく場合があります" }
+        ]
+      },
+      {
+        "sentenceId": "s14",
+        "text": "コピーではなく、本物のカードを持っていくことが多いです。",
+        "detail": "在留カードやマイナンバーカードは、本物を見せるのがふつうです。",
+        "grounding": "general",
+        "confidence": "medium"
+      },
+      {
+        "sentenceId": "s12",
+        "text": "先に、前の住所の役所で転出届を出しておく必要があります。転出証明書がないと、手続きが進まないかもしれません。",
+        "grounding": "page",
+        "confidence": "high",
+        "evidence": [
+          { "sentenceId": "s12", "quote": "前の住所の市区町村で転出届を出したときに交付されたもの" }
+        ]
+      },
+      {
+        "sentenceId": "s17",
+        "text": "転入届のとき、在留カードの住所もいっしょに変えてもらえることが多いです。カードの裏に新しい住所が書かれます。",
+        "detail": "在留カードがないと、入管への住所の届けが、べつに必要になるかもしれません。窓口で確認しましょう。",
+        "grounding": "general",
+        "confidence": "medium"
+      },
+      {
+        "sentenceId": "s29",
+        "text": "3〜4月や、月曜日、連休のあとは、とくに混むことが多いです。",
+        "detail": "時間に余裕をもって、なるべく朝早く行くとよいです。",
+        "grounding": "general",
+        "confidence": "medium",
+        "evidence": [{ "sentenceId": "s29", "quote": "3月下旬から4月上旬は窓口が大変混雑し" }]
+      },
+      {
+        "sentenceId": "s23",
+        "text": "出張所ではできない手続きもあるので、迷ったら本庁舎に行くほうがよいでしょう。",
+        "grounding": "page",
+        "confidence": "medium",
+        "evidence": [{ "sentenceId": "s23", "quote": "一部の手続きは本庁舎のみの取扱いとなります" }]
+      },
+      {
+        "sentenceId": "s35",
+        "text": "国民健康保険や児童手当などは、別の窓口のことが多いです。同じ日に、いくつかの窓口を回るかもしれません。",
+        "grounding": "general",
+        "confidence": "medium",
+        "evidence": [{ "sentenceId": "s35", "quote": "次の手続きも行ってください" }]
+      },
+      {
+        "sentenceId": "s38",
+        "text": "児童手当は、申請が遅れると、もらえない月が出ることがあります。早めに申請するとよいです。",
+        "grounding": "general",
+        "confidence": "medium"
+      },
+      {
+        "sentenceId": "s36",
+        "text": "日本に住む人は、どこかの健康保険に入ります。会社の保険がない人は、「国民健康保険」に入ることが多いです。",
+        "grounding": "general",
+        "confidence": "medium"
+      },
+      {
+        "sentenceId": "s16",
+        "text": "委任状の書き方が決まっていることがあります。区役所のページに、用紙があるかもしれません。",
+        "grounding": "guess",
+        "confidence": "low"
+      },
+      {
+        "sentenceId": "s21",
+        "text": "窓口の書類は、日本語だけのことが多いです。不安なら、日本語ができる人と行くとよいかもしれません。",
+        "grounding": "general",
+        "confidence": "medium"
+      },
+      {
+        "sentenceId": "s43",
+        "text": "わからないことは、行く前にこの番号に電話して確認できます。",
+        "grounding": "page",
+        "confidence": "high",
+        "evidence": [{ "sentenceId": "s43", "quote": "電話番号：000-000-0000" }]
+      }
+    ]
+  }
+}

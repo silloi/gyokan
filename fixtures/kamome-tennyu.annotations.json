@@ -1,0 +1,2016 @@
+{
+  "version": 1,
+  "pageHash": "3ee08da2c406201dd9111297",
+  "title": "転入届（ほかの市区町村からの引っ越し）｜かもめ区（架空）",
+  "url": "/demo/kamome-tennyu.html",
+  "generatedAt": "2026-11-02T17:43:52.276Z",
+  "generator": {
+    "kind": "claude-code-session",
+    "promptVersion": "2026-11-02.1",
+    "note": "Claude API キーの無い開発環境で、Claude Code（開発セッション）が shared/prompts.ts の SYSTEM_PROMPT とレベル別の指示に沿って下書きし、validate.ts で検証したもの。API で生成した結果ではない。対象は架空のページ。"
+  },
+  "sentences": [
+    {
+      "id": "s1",
+      "blockId": "b1",
+      "blockKind": "heading",
+      "text": "転入届（ほかの市区町村からの引っ越し）"
+    },
+    {
+      "id": "s2",
+      "blockId": "b2",
+      "blockKind": "paragraph",
+      "text": "他の市区町村からかもめ区に引っ越してきたときは、転入届の提出が必要です。"
+    },
+    {
+      "id": "s3",
+      "blockId": "b2",
+      "blockKind": "paragraph",
+      "text": "新しい住所に住み始めた日から14日以内に届け出てください。"
+    },
+    {
+      "id": "s4",
+      "blockId": "b3",
+      "blockKind": "paragraph",
+      "text": "正当な理由なく届出が遅れた場合は、過料が科されることがありますので、ご注意ください。"
+    },
+    {
+      "id": "s5",
+      "blockId": "b4",
+      "blockKind": "heading",
+      "text": "届出の期間"
+    },
+    {
+      "id": "s6",
+      "blockId": "b5",
+      "blockKind": "paragraph",
+      "text": "新しい住所に住み始めた日から14日以内（引っ越しの前には届け出ることができません）"
+    },
+    {
+      "id": "s7",
+      "blockId": "b6",
+      "blockKind": "heading",
+      "text": "届出ができる人"
+    },
+    {
+      "id": "s8",
+      "blockId": "b7",
+      "blockKind": "paragraph",
+      "text": "本人又は同じ世帯の方が届け出てください。"
+    },
+    {
+      "id": "s9",
+      "blockId": "b7",
+      "blockKind": "paragraph",
+      "text": "それ以外の方が届け出る場合は、委任状が必要です。"
+    },
+    {
+      "id": "s10",
+      "blockId": "b8",
+      "blockKind": "paragraph",
+      "text": "原則として、委任状は本人が自署したものに限ります。"
+    },
+    {
+      "id": "s11",
+      "blockId": "b9",
+      "blockKind": "heading",
+      "text": "届出に必要なもの"
+    },
+    {
+      "id": "s12",
+      "blockId": "b10",
+      "blockKind": "list-item",
+      "text": "転出証明書（前の住所の市区町村で転出届を出したときに交付されたもの）"
+    },
+    {
+      "id": "s13",
+      "blockId": "b10",
+      "blockKind": "list-item",
+      "text": "※マイナンバーカードを利用して転出届をした方は不要です。"
+    },
+    {
+      "id": "s14",
+      "blockId": "b11",
+      "blockKind": "list-item",
+      "text": "届出に来られる方の本人確認書類（マイナンバーカード、運転免許証、在留カードなど）"
+    },
+    {
+      "id": "s15",
+      "blockId": "b12",
+      "blockKind": "list-item",
+      "text": "転入される方全員のマイナンバーカード（お持ちの方のみ）"
+    },
+    {
+      "id": "s16",
+      "blockId": "b13",
+      "blockKind": "list-item",
+      "text": "代理人が届け出る場合は、委任状"
+    },
+    {
+      "id": "s17",
+      "blockId": "b14",
+      "blockKind": "paragraph",
+      "text": "外国籍の方は、転入される方全員の在留カード又は特別永住者証明書をお持ちください。"
+    },
+    {
+      "id": "s18",
+      "blockId": "b15",
+      "blockKind": "paragraph",
+      "text": "必要に応じて、ほかの書類の提示をお願いすることがあります。"
+    },
+    {
+      "id": "s19",
+      "blockId": "b16",
+      "blockKind": "heading",
+      "text": "届出の場所と受付時間"
+    },
+    {
+      "id": "s20",
+      "blockId": "b17",
+      "blockKind": "table-cell",
+      "text": "届出の場所"
+    },
+    {
+      "id": "s21",
+      "blockId": "b18",
+      "blockKind": "table-cell",
+      "text": "かもめ区役所 本庁舎2階 区民課 住民記録係"
+    },
+    {
+      "id": "s22",
+      "blockId": "b18",
+      "blockKind": "table-cell",
+      "text": "各出張所でも受け付けています。"
+    },
+    {
+      "id": "s23",
+      "blockId": "b18",
+      "blockKind": "table-cell",
+      "text": "ただし、一部の手続きは本庁舎のみの取扱いとなります。"
+    },
+    {
+      "id": "s24",
+      "blockId": "b19",
+      "blockKind": "table-cell",
+      "text": "受付時間"
+    },
+    {
+      "id": "s25",
+      "blockId": "b20",
+      "blockKind": "table-cell",
+      "text": "平日 午前8時30分から午後5時まで（土曜日・日曜日・祝日・年末年始を除く）"
+    },
+    {
+      "id": "s26",
+      "blockId": "b21",
+      "blockKind": "paragraph",
+      "text": "毎月第2・第4土曜日の午前9時から正午まで、本庁舎で休日窓口を開設しています。"
+    },
+    {
+      "id": "s27",
+      "blockId": "b21",
+      "blockKind": "paragraph",
+      "text": "ただし、他の自治体への確認が必要な手続きは、後日改めてお越しいただく場合があります。"
+    },
+    {
+      "id": "s28",
+      "blockId": "b22",
+      "blockKind": "heading",
+      "text": "ご注意ください"
+    },
+    {
+      "id": "s29",
+      "blockId": "b23",
+      "blockKind": "list-item",
+      "text": "3月下旬から4月上旬は窓口が大変混雑し、長時間お待ちいただくことがあります。"
+    },
+    {
+      "id": "s30",
+      "blockId": "b23",
+      "blockKind": "list-item",
+      "text": "お手続きはお早めにお済ませください。"
+    },
+    {
+      "id": "s31",
+      "blockId": "b24",
+      "blockKind": "list-item",
+      "text": "受付終了時刻間際のご来庁はご遠慮ください。"
+    },
+    {
+      "id": "s32",
+      "blockId": "b25",
+      "blockKind": "list-item",
+      "text": "マイナンバーカードをお持ちの方は、転入届と同時にカードの住所変更の手続きを行ってください。"
+    },
+    {
+      "id": "s33",
+      "blockId": "b25",
+      "blockKind": "list-item",
+      "text": "手続きをしないと、カードが使えなくなることがあります。"
+    },
+    {
+      "id": "s34",
+      "blockId": "b26",
+      "blockKind": "heading",
+      "text": "あわせて必要な手続き"
+    },
+    {
+      "id": "s35",
+      "blockId": "b27",
+      "blockKind": "paragraph",
+      "text": "転入届の手続きの後、該当する方は次の手続きも行ってください。"
+    },
+    {
+      "id": "s36",
+      "blockId": "b28",
+      "blockKind": "list-item",
+      "text": "国民健康保険（勤務先の健康保険に加入していない方）"
+    },
+    {
+      "id": "s37",
+      "blockId": "b29",
+      "blockKind": "list-item",
+      "text": "国民年金（20歳以上60歳未満で、厚生年金に加入していない方）"
+    },
+    {
+      "id": "s38",
+      "blockId": "b30",
+      "blockKind": "list-item",
+      "text": "児童手当（お子さんを養育している方）"
+    },
+    {
+      "id": "s39",
+      "blockId": "b31",
+      "blockKind": "list-item",
+      "text": "小学校・中学校の転入学（お子さんがいる方）"
+    },
+    {
+      "id": "s40",
+      "blockId": "b32",
+      "blockKind": "list-item",
+      "text": "印鑑登録（必要な方のみ）"
+    },
+    {
+      "id": "s41",
+      "blockId": "b33",
+      "blockKind": "heading",
+      "text": "お問い合わせ"
+    },
+    {
+      "id": "s42",
+      "blockId": "b34",
+      "blockKind": "paragraph",
+      "text": "区民部 区民課 住民記録係"
+    },
+    {
+      "id": "s43",
+      "blockId": "b34",
+      "blockKind": "paragraph",
+      "text": "電話番号：000-000-0000"
+    }
+  ],
+  "notes": [
+    {
+      "id": "L1-01",
+      "level": 1,
+      "sentenceId": "s1",
+      "anchor": "転入届",
+      "reading": "てんにゅうとどけ",
+      "text": "引っ越してきたことを区に知らせる書類",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s1",
+          "quote": "転入届",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-02",
+      "level": 1,
+      "sentenceId": "s1",
+      "anchor": "市区町村",
+      "reading": "しくちょうそん",
+      "text": "市や区や町や村のこと",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s1",
+          "quote": "市区町村",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-03",
+      "level": 1,
+      "sentenceId": "s2",
+      "anchor": "提出",
+      "reading": "ていしゅつ",
+      "text": "書類を出すこと",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s2",
+          "quote": "提出",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-04",
+      "level": 1,
+      "sentenceId": "s3",
+      "anchor": "届け出て",
+      "reading": "とどけでて",
+      "text": "役所に書類を出して、しらせて",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s3",
+          "quote": "届け出て",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-05",
+      "level": 1,
+      "sentenceId": "s4",
+      "anchor": "正当な理由",
+      "reading": "せいとうなりゆう",
+      "text": "みんなが納得できる、ちゃんとした理由",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s4",
+          "quote": "正当な理由",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-06",
+      "level": 1,
+      "sentenceId": "s4",
+      "anchor": "過料",
+      "reading": "かりょう",
+      "text": "決まりを守らないときに払うお金",
+      "detail": "「罰金」とはちがい、犯罪の記録にはなりません。",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s4",
+          "quote": "過料",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-07",
+      "level": 1,
+      "sentenceId": "s4",
+      "anchor": "科される",
+      "reading": "かされる",
+      "text": "払うように決められる",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s4",
+          "quote": "科される",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-08",
+      "level": 1,
+      "sentenceId": "s8",
+      "anchor": "又は",
+      "reading": "または",
+      "text": "「AかB」の「か」と同じ意味",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s8",
+          "quote": "又は",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-09",
+      "level": 1,
+      "sentenceId": "s8",
+      "anchor": "世帯",
+      "reading": "せたい",
+      "text": "いっしょに住んで生活している家族など",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s8",
+          "quote": "世帯",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-10",
+      "level": 1,
+      "sentenceId": "s9",
+      "anchor": "委任状",
+      "reading": "いにんじょう",
+      "text": "ほかの人に手続きをたのむための書類",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s9",
+          "quote": "委任状",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-11",
+      "level": 1,
+      "sentenceId": "s10",
+      "anchor": "自署",
+      "reading": "じしょ",
+      "text": "じぶんで名前を書くこと",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s10",
+          "quote": "自署",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-12",
+      "level": 1,
+      "sentenceId": "s12",
+      "anchor": "転出証明書",
+      "reading": "てんしゅつしょうめいしょ",
+      "text": "前の住所から出たことを、しめす書類",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s12",
+          "quote": "転出証明書",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-13",
+      "level": 1,
+      "sentenceId": "s12",
+      "anchor": "交付",
+      "reading": "こうふ",
+      "text": "役所が書類をわたすこと",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s12",
+          "quote": "交付",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-14",
+      "level": 1,
+      "sentenceId": "s12",
+      "anchor": "転出届",
+      "reading": "てんしゅつとどけ",
+      "text": "引っ越して出ていくときに出す書類",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s12",
+          "quote": "転出届",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-15",
+      "level": 1,
+      "sentenceId": "s13",
+      "anchor": "不要",
+      "reading": "ふよう",
+      "text": "いらない",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s13",
+          "quote": "不要",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-16",
+      "level": 1,
+      "sentenceId": "s14",
+      "anchor": "本人確認書類",
+      "reading": "ほんにんかくにんしょるい",
+      "text": "自分がだれかを、しめすカードや書類",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s14",
+          "quote": "本人確認書類",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-17",
+      "level": 1,
+      "sentenceId": "s16",
+      "anchor": "代理人",
+      "reading": "だいりにん",
+      "text": "本人の代わりに手続きをする人",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s16",
+          "quote": "代理人",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-18",
+      "level": 1,
+      "sentenceId": "s17",
+      "anchor": "外国籍",
+      "reading": "がいこくせき",
+      "text": "日本ではない国の、国籍があること",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s17",
+          "quote": "外国籍",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-19",
+      "level": 1,
+      "sentenceId": "s17",
+      "anchor": "特別永住者証明書",
+      "reading": "とくべつえいじゅうしゃしょうめいしょ",
+      "text": "「特別永住者」の人が持つカード",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s17",
+          "quote": "特別永住者証明書",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-20",
+      "level": 1,
+      "sentenceId": "s18",
+      "anchor": "提示",
+      "reading": "ていじ",
+      "text": "見せること",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s18",
+          "quote": "提示",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-21",
+      "level": 1,
+      "sentenceId": "s21",
+      "anchor": "本庁舎",
+      "reading": "ほんちょうしゃ",
+      "text": "区役所のいちばん大きなたてもの",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s21",
+          "quote": "本庁舎",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-22",
+      "level": 1,
+      "sentenceId": "s21",
+      "anchor": "住民記録係",
+      "reading": "じゅうみんきろくがかり",
+      "text": "住所のことをあつかう窓口",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s21",
+          "quote": "住民記録係",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-23",
+      "level": 1,
+      "sentenceId": "s22",
+      "anchor": "出張所",
+      "reading": "しゅっちょうじょ",
+      "text": "ほかの場所にある、小さな区役所",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s22",
+          "quote": "出張所",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-24",
+      "level": 1,
+      "sentenceId": "s23",
+      "anchor": "取扱い",
+      "reading": "とりあつかい",
+      "text": "手続きを受け付けること",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s23",
+          "quote": "取扱い",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-25",
+      "level": 1,
+      "sentenceId": "s25",
+      "anchor": "年末年始",
+      "reading": "ねんまつねんし",
+      "text": "12月の終わりから1月の初めまで",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s25",
+          "quote": "年末年始",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-26",
+      "level": 1,
+      "sentenceId": "s26",
+      "anchor": "正午",
+      "reading": "しょうご",
+      "text": "昼の12時",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s26",
+          "quote": "正午",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-27",
+      "level": 1,
+      "sentenceId": "s26",
+      "anchor": "開設",
+      "reading": "かいせつ",
+      "text": "窓口を開くこと",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s26",
+          "quote": "開設",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-28",
+      "level": 1,
+      "sentenceId": "s27",
+      "anchor": "自治体",
+      "reading": "じちたい",
+      "text": "市や区や町や村など",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s27",
+          "quote": "自治体",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-29",
+      "level": 1,
+      "sentenceId": "s27",
+      "anchor": "後日改めて",
+      "reading": "ごじつあらためて",
+      "text": "別の日に、もう一度",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s27",
+          "quote": "後日改めて",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-30",
+      "level": 1,
+      "sentenceId": "s29",
+      "anchor": "下旬",
+      "reading": "げじゅん",
+      "text": "その月の21日から終わりまで",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s29",
+          "quote": "下旬",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-31",
+      "level": 1,
+      "sentenceId": "s29",
+      "anchor": "上旬",
+      "reading": "じょうじゅん",
+      "text": "その月の1日から10日まで",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s29",
+          "quote": "上旬",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-32",
+      "level": 1,
+      "sentenceId": "s29",
+      "anchor": "混雑",
+      "reading": "こんざつ",
+      "text": "人がとても多く、こむこと",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s29",
+          "quote": "混雑",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-33",
+      "level": 1,
+      "sentenceId": "s31",
+      "anchor": "受付終了時刻間際",
+      "reading": "うけつけしゅうりょうじこくまぎわ",
+      "text": "受付がおわる時間の、すぐ前",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s31",
+          "quote": "受付終了時刻間際",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-34",
+      "level": 1,
+      "sentenceId": "s31",
+      "anchor": "ご来庁",
+      "reading": "ごらいちょう",
+      "text": "役所に来ること",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s31",
+          "quote": "ご来庁",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-35",
+      "level": 1,
+      "sentenceId": "s32",
+      "anchor": "行って",
+      "reading": "おこなって",
+      "text": "（手続きを）して。「行く」ではない",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s32",
+          "quote": "行って",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-36",
+      "level": 1,
+      "sentenceId": "s35",
+      "anchor": "該当する",
+      "reading": "がいとうする",
+      "text": "あてはまる",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s35",
+          "quote": "該当する",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-37",
+      "level": 1,
+      "sentenceId": "s36",
+      "anchor": "勤務先",
+      "reading": "きんむさき",
+      "text": "働いている会社など",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s36",
+          "quote": "勤務先",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-38",
+      "level": 1,
+      "sentenceId": "s37",
+      "anchor": "厚生年金",
+      "reading": "こうせいねんきん",
+      "text": "会社員などが入る年金",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s37",
+          "quote": "厚生年金",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-39",
+      "level": 1,
+      "sentenceId": "s38",
+      "anchor": "児童手当",
+      "reading": "じどうてあて",
+      "text": "子どもを育てる人がもらえるお金",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s38",
+          "quote": "児童手当",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-40",
+      "level": 1,
+      "sentenceId": "s38",
+      "anchor": "養育",
+      "reading": "よういく",
+      "text": "子どもを育てること",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s38",
+          "quote": "養育",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-41",
+      "level": 1,
+      "sentenceId": "s39",
+      "anchor": "転入学",
+      "reading": "てんにゅうがく",
+      "text": "ほかの学校から移って入ること",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s39",
+          "quote": "転入学",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L1-42",
+      "level": 1,
+      "sentenceId": "s40",
+      "anchor": "印鑑登録",
+      "reading": "いんかんとうろく",
+      "text": "はんこを役所に登録すること",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s40",
+          "quote": "印鑑登録",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-01",
+      "level": 2,
+      "sentenceId": "s3",
+      "anchor": "届け出てください",
+      "reading": "",
+      "text": "「お願い」の形ですが、かならずすることです。",
+      "detail": "前の文に「必要です」とあり、遅れると「過料」もあるので、しなければならないことです。",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s2",
+          "quote": "転入届の提出が必要です",
+          "verified": true
+        },
+        {
+          "sentenceId": "s4",
+          "quote": "過料が科されることがあります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-02",
+      "level": 2,
+      "sentenceId": "s4",
+      "anchor": "科されることがあります",
+      "reading": "",
+      "text": "かならずではありませんが、本当にお金を払うことになる場合があります。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s4",
+          "quote": "科されることがあります",
+          "verified": true
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "L2-03",
+      "level": 2,
+      "sentenceId": "s4",
+      "anchor": "ご注意ください",
+      "reading": "",
+      "text": "「気をつけて」という意味です。ここでは「遅れないで」という強い注意です。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s4",
+          "quote": "届出が遅れた場合は",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-04",
+      "level": 2,
+      "sentenceId": "s10",
+      "anchor": "原則として",
+      "reading": "",
+      "text": "ほとんどの場合、こうします。例外はとても少ないです。",
+      "detail": "例外があるかどうかは、窓口で聞かないと分かりません。自分は例外だと思わずに、このとおり準備しましょう。",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s10",
+          "quote": "原則として",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-05",
+      "level": 2,
+      "sentenceId": "s10",
+      "anchor": "に限ります",
+      "reading": "",
+      "text": "これ以外はだめ、という意味です。本人が自分で書いた委任状だけが使えます。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s10",
+          "quote": "に限ります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-06",
+      "level": 2,
+      "sentenceId": "s14",
+      "anchor": "来られる方",
+      "reading": "",
+      "text": "「来る人」のていねいな言い方です。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s14",
+          "quote": "来られる方",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-07",
+      "level": 2,
+      "sentenceId": "s15",
+      "anchor": "お持ちの方のみ",
+      "reading": "",
+      "text": "持っている人だけ、という意味です。持っていない人は、なくても大丈夫です。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s15",
+          "quote": "お持ちの方のみ",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-08",
+      "level": 2,
+      "sentenceId": "s17",
+      "anchor": "お持ちください",
+      "reading": "",
+      "text": "「持ってきてください」という意味です。かならず持っていきます。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s17",
+          "quote": "お持ちください",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-09",
+      "level": 2,
+      "sentenceId": "s18",
+      "anchor": "必要に応じて",
+      "reading": "",
+      "text": "必要なときだけ、という意味です。人によって、ほかの書類がいることがあります。",
+      "detail": "何がいるかは、窓口で言われるまで分からないことがあります。心配なら、行く前に電話で聞きましょう。",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s18",
+          "quote": "必要に応じて",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-10",
+      "level": 2,
+      "sentenceId": "s18",
+      "anchor": "お願いすることがあります",
+      "reading": "",
+      "text": "「見せてください」と言われることがある、という意味です。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s18",
+          "quote": "お願いすることがあります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-11",
+      "level": 2,
+      "sentenceId": "s23",
+      "anchor": "ただし",
+      "reading": "",
+      "text": "前の文の例外を言う言葉です。このあとに大事なことが書いてあることが多いです。",
+      "detail": "",
+      "force": "none",
+      "grounding": "general",
+      "evidence": [
+        {
+          "sentenceId": "s23",
+          "quote": "ただし",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-12",
+      "level": 2,
+      "sentenceId": "s23",
+      "anchor": "本庁舎のみの取扱いとなります",
+      "reading": "",
+      "text": "本庁舎でしかできない、という意味です。出張所ではできません。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s23",
+          "quote": "一部の手続きは本庁舎のみの取扱いとなります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-13",
+      "level": 2,
+      "sentenceId": "s27",
+      "anchor": "後日改めてお越しいただく場合があります",
+      "reading": "",
+      "text": "その日に終わらず、別の日にもう一度来ることになるかもしれない、という意味です。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s27",
+          "quote": "後日改めてお越しいただく場合があります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-14",
+      "level": 2,
+      "sentenceId": "s29",
+      "anchor": "お待ちいただくことがあります",
+      "reading": "",
+      "text": "長い時間、待つことになるかもしれない、という意味です。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s29",
+          "quote": "お待ちいただくことがあります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-15",
+      "level": 2,
+      "sentenceId": "s30",
+      "anchor": "お早めにお済ませください",
+      "reading": "",
+      "text": "できるだけ早く手続きをしてください、という意味です。",
+      "detail": "混む時期の前や、期限よりかなり前に行くのがよい、ということです。",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s30",
+          "quote": "お早めにお済ませください",
+          "verified": true
+        },
+        {
+          "sentenceId": "s29",
+          "quote": "窓口が大変混雑し",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-16",
+      "level": 2,
+      "sentenceId": "s31",
+      "anchor": "ご遠慮ください",
+      "reading": "",
+      "text": "「しないでください」という意味です。お願いの形ですが、実際は禁止です。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s31",
+          "quote": "ご遠慮ください",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L2-17",
+      "level": 2,
+      "sentenceId": "s35",
+      "anchor": "該当する方は",
+      "reading": "",
+      "text": "あてはまる人だけ、という意味です。全員ではありません。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s35",
+          "quote": "該当する方は",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-01",
+      "level": 3,
+      "sentenceId": "s2",
+      "anchor": "",
+      "reading": "",
+      "text": "引っ越してきたら、かもめ区役所に転入届を出す必要があります。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s2",
+          "quote": "転入届の提出が必要です",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-02",
+      "level": 3,
+      "sentenceId": "s3",
+      "anchor": "",
+      "reading": "",
+      "text": "住みはじめた日から、14日以内に出します。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s3",
+          "quote": "14日以内に届け出てください",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-03",
+      "level": 3,
+      "sentenceId": "s4",
+      "anchor": "",
+      "reading": "",
+      "text": "期限に遅れると、お金を払うことになるかもしれません。",
+      "detail": "",
+      "force": "info",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s4",
+          "quote": "過料が科されることがあります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-04",
+      "level": 3,
+      "sentenceId": "s6",
+      "anchor": "",
+      "reading": "",
+      "text": "引っ越す前には出せません。住み始めてから出します。",
+      "detail": "",
+      "force": "must_not",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s6",
+          "quote": "引っ越しの前には届け出ることができません",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-05",
+      "level": 3,
+      "sentenceId": "s8",
+      "anchor": "",
+      "reading": "",
+      "text": "届けを出せるのは、本人か、いっしょに住む家族などです。",
+      "detail": "",
+      "force": "info",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s8",
+          "quote": "本人又は同じ世帯の方",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-06",
+      "level": 3,
+      "sentenceId": "s9",
+      "anchor": "",
+      "reading": "",
+      "text": "ほかの人に行ってもらうときは、委任状が必要です。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s9",
+          "quote": "委任状が必要です",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-07",
+      "level": 3,
+      "sentenceId": "s10",
+      "anchor": "",
+      "reading": "",
+      "text": "委任状は、たのむ本人が自分で名前を書いたものを使います。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s10",
+          "quote": "本人が自署したものに限ります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-08",
+      "level": 3,
+      "sentenceId": "s12",
+      "anchor": "",
+      "reading": "",
+      "text": "前の住所の役所でもらった「転出証明書」を、持っていきます。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s12",
+          "quote": "転出証明書",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-09",
+      "level": 3,
+      "sentenceId": "s13",
+      "anchor": "",
+      "reading": "",
+      "text": "マイナンバーカードで転出届をした人は、転出証明書はいりません。",
+      "detail": "",
+      "force": "info",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s13",
+          "quote": "マイナンバーカードを利用して転出届をした方は不要です",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-10",
+      "level": 3,
+      "sentenceId": "s14",
+      "anchor": "",
+      "reading": "",
+      "text": "窓口に行く人の、在留カードなどを持っていきます。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s14",
+          "quote": "届出に来られる方の本人確認書類",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-11",
+      "level": 3,
+      "sentenceId": "s15",
+      "anchor": "",
+      "reading": "",
+      "text": "マイナンバーカードがある人は、家族全員の分を持っていきます。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s15",
+          "quote": "転入される方全員のマイナンバーカード",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-12",
+      "level": 3,
+      "sentenceId": "s17",
+      "anchor": "",
+      "reading": "",
+      "text": "外国籍の人は、家族みんなの在留カードを持っていきます。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s17",
+          "quote": "転入される方全員の在留カード",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-13",
+      "level": 3,
+      "sentenceId": "s18",
+      "anchor": "",
+      "reading": "",
+      "text": "人によっては、ほかの書類も見せるように言われます。",
+      "detail": "",
+      "force": "info",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s18",
+          "quote": "ほかの書類の提示をお願いすることがあります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-14",
+      "level": 3,
+      "sentenceId": "s22",
+      "anchor": "",
+      "reading": "",
+      "text": "近くの出張所でもできますが、本庁舎でしかできない手続きもあります。",
+      "detail": "",
+      "force": "info",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s22",
+          "quote": "各出張所でも受け付けています",
+          "verified": true
+        },
+        {
+          "sentenceId": "s23",
+          "quote": "本庁舎のみの取扱い",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-15",
+      "level": 3,
+      "sentenceId": "s25",
+      "anchor": "",
+      "reading": "",
+      "text": "あいているのは、平日の朝8時半から夕方5時までです。土日と祝日は休みです。",
+      "detail": "",
+      "force": "info",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s25",
+          "quote": "平日 午前8時30分から午後5時まで",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-16",
+      "level": 3,
+      "sentenceId": "s26",
+      "anchor": "",
+      "reading": "",
+      "text": "第2・第4の土曜日は、お昼まで本庁舎があいています。",
+      "detail": "",
+      "force": "info",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s26",
+          "quote": "毎月第2・第4土曜日の午前9時から正午まで",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-17",
+      "level": 3,
+      "sentenceId": "s27",
+      "anchor": "",
+      "reading": "",
+      "text": "土曜日には、その日に終わらない手続きもあります。",
+      "detail": "",
+      "force": "info",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s27",
+          "quote": "後日改めてお越しいただく場合があります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-18",
+      "level": 3,
+      "sentenceId": "s30",
+      "anchor": "",
+      "reading": "",
+      "text": "混む3月・4月をさけて、早めに行くのがよいです。",
+      "detail": "",
+      "force": "should",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s29",
+          "quote": "3月下旬から4月上旬は窓口が大変混雑し",
+          "verified": true
+        },
+        {
+          "sentenceId": "s30",
+          "quote": "お早めにお済ませください",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-19",
+      "level": 3,
+      "sentenceId": "s31",
+      "anchor": "",
+      "reading": "",
+      "text": "受付が終わる時間の直前には、行かないでください。",
+      "detail": "",
+      "force": "must_not",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s31",
+          "quote": "受付終了時刻間際のご来庁はご遠慮ください",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-20",
+      "level": 3,
+      "sentenceId": "s32",
+      "anchor": "",
+      "reading": "",
+      "text": "転入届と同じ日に、マイナンバーカードの住所も変えます。しないと、使えなくなることがあります。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s32",
+          "quote": "転入届と同時にカードの住所変更の手続き",
+          "verified": true
+        },
+        {
+          "sentenceId": "s33",
+          "quote": "カードが使えなくなることがあります",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L3-21",
+      "level": 3,
+      "sentenceId": "s35",
+      "anchor": "",
+      "reading": "",
+      "text": "このあと、自分にあてはまる手続きもします。",
+      "detail": "",
+      "force": "must",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s35",
+          "quote": "該当する方は次の手続きも行ってください",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L4-01",
+      "level": 4,
+      "sentenceId": "s25",
+      "anchor": "",
+      "reading": "",
+      "text": "平日の昼しか開いていないので、仕事を休む必要があることが多いです。",
+      "detail": "第2・第4土曜日の休日窓口も使えます。ただし、土曜日にはできない手続きもあります。",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s25",
+          "quote": "平日 午前8時30分から午後5時まで",
+          "verified": true
+        },
+        {
+          "sentenceId": "s27",
+          "quote": "後日改めてお越しいただく場合があります",
+          "verified": true
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-02",
+      "level": 4,
+      "sentenceId": "s14",
+      "anchor": "",
+      "reading": "",
+      "text": "コピーではなく、本物のカードを持っていくことが多いです。",
+      "detail": "在留カードやマイナンバーカードは、本物を見せるのがふつうです。",
+      "force": "none",
+      "grounding": "general",
+      "evidence": [],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-03",
+      "level": 4,
+      "sentenceId": "s12",
+      "anchor": "",
+      "reading": "",
+      "text": "先に、前の住所の役所で転出届を出しておく必要があります。転出証明書がないと、手続きが進まないかもしれません。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s12",
+          "quote": "前の住所の市区町村で転出届を出したときに交付されたもの",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "L4-04",
+      "level": 4,
+      "sentenceId": "s17",
+      "anchor": "",
+      "reading": "",
+      "text": "転入届のとき、在留カードの住所もいっしょに変えてもらえることが多いです。カードの裏に新しい住所が書かれます。",
+      "detail": "在留カードがないと、入管への住所の届けが、べつに必要になるかもしれません。窓口で確認しましょう。",
+      "force": "none",
+      "grounding": "general",
+      "evidence": [],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-05",
+      "level": 4,
+      "sentenceId": "s29",
+      "anchor": "",
+      "reading": "",
+      "text": "3〜4月や、月曜日、連休のあとは、とくに混むことが多いです。",
+      "detail": "時間に余裕をもって、なるべく朝早く行くとよいです。",
+      "force": "none",
+      "grounding": "general",
+      "evidence": [
+        {
+          "sentenceId": "s29",
+          "quote": "3月下旬から4月上旬は窓口が大変混雑し",
+          "verified": true
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-06",
+      "level": 4,
+      "sentenceId": "s23",
+      "anchor": "",
+      "reading": "",
+      "text": "出張所ではできない手続きもあるので、迷ったら本庁舎に行くほうがよいでしょう。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s23",
+          "quote": "一部の手続きは本庁舎のみの取扱いとなります",
+          "verified": true
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-07",
+      "level": 4,
+      "sentenceId": "s35",
+      "anchor": "",
+      "reading": "",
+      "text": "国民健康保険や児童手当などは、別の窓口のことが多いです。同じ日に、いくつかの窓口を回るかもしれません。",
+      "detail": "",
+      "force": "none",
+      "grounding": "general",
+      "evidence": [
+        {
+          "sentenceId": "s35",
+          "quote": "次の手続きも行ってください",
+          "verified": true
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-08",
+      "level": 4,
+      "sentenceId": "s38",
+      "anchor": "",
+      "reading": "",
+      "text": "児童手当は、申請が遅れると、もらえない月が出ることがあります。早めに申請するとよいです。",
+      "detail": "",
+      "force": "none",
+      "grounding": "general",
+      "evidence": [],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-09",
+      "level": 4,
+      "sentenceId": "s36",
+      "anchor": "",
+      "reading": "",
+      "text": "日本に住む人は、どこかの健康保険に入ります。会社の保険がない人は、「国民健康保険」に入ることが多いです。",
+      "detail": "",
+      "force": "none",
+      "grounding": "general",
+      "evidence": [],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-10",
+      "level": 4,
+      "sentenceId": "s16",
+      "anchor": "",
+      "reading": "",
+      "text": "委任状の書き方が決まっていることがあります。区役所のページに、用紙があるかもしれません。",
+      "detail": "",
+      "force": "none",
+      "grounding": "guess",
+      "evidence": [],
+      "confidence": "low"
+    },
+    {
+      "id": "L4-11",
+      "level": 4,
+      "sentenceId": "s21",
+      "anchor": "",
+      "reading": "",
+      "text": "窓口の書類は、日本語だけのことが多いです。不安なら、日本語ができる人と行くとよいかもしれません。",
+      "detail": "",
+      "force": "none",
+      "grounding": "general",
+      "evidence": [],
+      "confidence": "medium"
+    },
+    {
+      "id": "L4-12",
+      "level": 4,
+      "sentenceId": "s43",
+      "anchor": "",
+      "reading": "",
+      "text": "わからないことは、行く前にこの番号に電話して確認できます。",
+      "detail": "",
+      "force": "none",
+      "grounding": "page",
+      "evidence": [
+        {
+          "sentenceId": "s43",
+          "quote": "電話番号：000-000-0000",
+          "verified": true
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

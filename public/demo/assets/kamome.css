@@ -1,0 +1,62 @@
+/* 架空の区役所ページの見た目（デモ用）。よくある自治体サイトの雰囲気を真似た独自のスタイル */
+html { font-size: 62.5%; }
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, "Noto Sans JP", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #222;
+  background: #fff;
+}
+a { color: #0645ad; }
+.dev-notice {
+  background: #fff4c2;
+  border-bottom: 2px solid #e0b300;
+  padding: 8px 16px;
+  font-size: 1.4rem;
+}
+#tmp_header { background: #0b3d6e; color: #fff; padding: 12px 16px 0; }
+#tmp_header a { color: #fff; text-decoration: none; }
+.site-title { font-size: 2.6rem; font-weight: bold; letter-spacing: 0.05em; }
+.site-title .sub { font-size: 1.4rem; font-weight: normal; margin-left: 4px; }
+.tools { float: right; margin-top: -36px; font-size: 1.2rem; }
+.tool { border: 1px solid #8fb3d9; border-radius: 3px; padding: 2px 8px; margin-left: 6px; }
+.gnav ul { display: flex; flex-wrap: wrap; margin: 10px 0 0; padding: 0; list-style: none; }
+.gnav li { margin: 0; }
+.gnav a { display: block; padding: 10px 18px; background: #134f8a; border-right: 1px solid #0b3d6e; font-size: 1.5rem; }
+#tmp_pankuzu { max-width: 1040px; margin: 0 auto; padding: 10px 16px; font-size: 1.3rem; color: #555; }
+#tmp_wrapper { max-width: 1040px; margin: 0 auto; padding: 0 16px 40px; display: flex; gap: 32px; align-items: flex-start; }
+#tmp_contents { flex: 1; min-width: 0; }
+#tmp_contents h1 {
+  font-size: 2.6rem;
+  line-height: 1.4;
+  margin: 8px 0 24px;
+  padding: 14px 16px;
+  background: #eef4fa;
+  border-left: 8px solid #0b3d6e;
+}
+#tmp_contents h2 {
+  font-size: 2rem;
+  margin: 36px 0 14px;
+  padding: 6px 0 6px 12px;
+  border-bottom: 2px solid #0b3d6e;
+  border-left: 5px solid #f39800;
+}
+#tmp_contents p { margin: 0 0 1em; }
+#tmp_contents ul { margin: 0 0 1.2em; padding-left: 1.6em; }
+#tmp_contents li { margin-bottom: 0.4em; }
+table.datatable { border-collapse: collapse; width: 100%; margin: 0 0 1.2em; }
+table.datatable th, table.datatable td { border: 1px solid #b7c7d9; padding: 10px 12px; text-align: left; vertical-align: top; }
+table.datatable th { background: #eef4fa; width: 8em; white-space: nowrap; }
+#tmp_side { width: 240px; flex-shrink: 0; border: 1px solid #ccd; padding: 0 12px 8px; margin-top: 8px; }
+#tmp_side h2 { font-size: 1.5rem; margin: 12px 0 8px; }
+#tmp_side ul { padding-left: 1.2em; font-size: 1.4rem; }
+#tmp_footer { background: #0b3d6e; color: #fff; padding: 16px; font-size: 1.3rem; }
+#tmp_footer p { margin: 0 0 4px; max-width: 1040px; margin-left: auto; margin-right: auto; }
+.js-rendered { color: #ffe08a; }
+.noscript { background: #fdd; padding: 6px 16px; margin: 0; }
+@media (max-width: 760px) {
+  #tmp_wrapper { display: block; }
+  #tmp_side { width: auto; }
+  .tools { float: none; margin: 6px 0 0; }
+}

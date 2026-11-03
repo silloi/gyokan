@@ -1,0 +1,228 @@
+/*
+ * iframe の中（原文のページ）に差し込むスタイル。
+ * 原文には手を加えず、行の下に差し込む補足（gk-*）の見た目だけを足す。
+ * 補足は「原文とは別のもの」と一目で分かるよう、小さめの文字・色つきの線と背景・ラベルで区別する。
+ */
+:root {
+  --gk-l1: #0e7490;
+  --gk-l1-bg: #ecfeff;
+  --gk-l2: #15803d;
+  --gk-l2-bg: #f0fdf4;
+  --gk-l3: #6d28d9;
+  --gk-l3-bg: #f5f3ff;
+  --gk-l4: #c2410c;
+  --gk-l4-bg: #fff7ed;
+  --gk-font:
+    "BIZ UDPGothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", system-ui,
+    sans-serif;
+}
+
+/* ---- 補足がついた原文の語（つまみがそのレベル以上のときだけ印を付ける） ---- */
+gk-a {
+  transition: background-color 0.3s ease;
+}
+html.gk-l1 gk-a[data-level="1"] {
+  text-decoration: underline dotted var(--gk-l1) 2px;
+  text-underline-offset: 0.28em;
+  cursor: pointer;
+}
+html.gk-l2 gk-a[data-level="2"] {
+  background-image: linear-gradient(transparent 62%, rgb(21 128 61 / 0.2) 62%);
+  cursor: pointer;
+}
+
+/* ---- 行の下の補足 ----
+ * gk-line は行の終わりに差し込む、幅 100% のインラインブロック。
+ * 原文の文字の大きさ・行の高さ・字下げ・揃え・装飾などを引き継がないよう、すべて自分で決める。 */
+gk-line {
+  display: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: top;
+  /* 補足の文字が、親の幅（表の列幅・浮動要素の幅など）の計算に影響しないようにする */
+  contain: inline-size;
+  text-indent: 0;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+  word-spacing: normal;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  font: 400 12px / 1.5 var(--gk-font);
+  font-style: normal;
+  color: #1f2937;
+  text-shadow: none;
+}
+html.gk-l1 gk-line[data-levels~="1"],
+html.gk-l2 gk-line[data-levels~="2"],
+html.gk-l3 gk-line[data-levels~="3"],
+html.gk-l4 gk-line[data-levels~="4"] {
+  display: inline-block;
+}
+gk-line-in {
+  display: block;
+  padding: 1px 0 3px;
+}
+
+gk-note {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin: 0;
+  transition:
+    grid-template-rows 0.45s ease,
+    opacity 0.35s ease,
+    margin 0.45s ease;
+}
+html.gk-l1 gk-note[data-level="1"],
+html.gk-l2 gk-note[data-level="2"],
+html.gk-l3 gk-note[data-level="3"],
+html.gk-l4 gk-note[data-level="4"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin: 1px 0;
+}
+/* 行ごと表示されたときも、じわじわ広がる */
+@starting-style {
+  html.gk-l1 gk-note[data-level="1"],
+  html.gk-l2 gk-note[data-level="2"],
+  html.gk-l3 gk-note[data-level="3"],
+  html.gk-l4 gk-note[data-level="4"] {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin: 0;
+  }
+}
+gk-in {
+  display: block;
+  min-height: 0;
+  overflow: hidden;
+}
+gk-box {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  padding: 1px 6px 1px 6px;
+  border-left: 2px solid var(--gk-c);
+  border-radius: 0 4px 4px 0;
+  background: var(--gk-bg);
+  cursor: pointer;
+}
+gk-note[data-level="1"] {
+  --gk-c: var(--gk-l1);
+  --gk-bg: var(--gk-l1-bg);
+}
+gk-note[data-level="2"] {
+  --gk-c: var(--gk-l2);
+  --gk-bg: var(--gk-l2-bg);
+}
+gk-note[data-level="3"] {
+  --gk-c: var(--gk-l3);
+  --gk-bg: var(--gk-l3-bg);
+}
+gk-note[data-level="4"] {
+  --gk-c: var(--gk-l4);
+  --gk-bg: var(--gk-l4-bg);
+}
+gk-note:hover gk-box,
+gk-note:focus-visible gk-box {
+  filter: brightness(0.96);
+}
+gk-note:focus-visible {
+  outline: none;
+}
+gk-note[data-selected] gk-box {
+  box-shadow: 0 0 0 2px var(--gk-c);
+}
+/* 補足を語より左へずらしたときに、語の真下に付ける印（▲） */
+gk-pin {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  margin-left: 1px;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid var(--gk-c);
+  border-left: 4px solid transparent;
+  pointer-events: none;
+}
+gk-t {
+  color: #111827;
+}
+gk-badge {
+  display: inline-block;
+  margin: 0 4px 0 0;
+  padding: 0 4px;
+  border: 1px solid;
+  border-radius: 3px;
+  font-size: 10px;
+  line-height: 14px;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+gk-t + gk-badge {
+  margin: 0 0 0 5px;
+}
+gk-badge + gk-badge {
+  margin-left: 3px;
+}
+gk-badge[data-kind="guess"] {
+  color: #b91c1c;
+  border-color: #fca5a5;
+  background: #fff1f2;
+}
+gk-badge[data-kind="general"] {
+  color: #92400e;
+  border-color: #fcd34d;
+  background: #fffbeb;
+}
+gk-badge[data-kind="must"] {
+  color: #fff;
+  border-color: #b91c1c;
+  background: #b91c1c;
+}
+gk-badge[data-kind="must_not"] {
+  color: #fff;
+  border-color: #7f1d1d;
+  background: #7f1d1d;
+}
+gk-badge[data-kind="should"] {
+  color: #9a3412;
+  border-color: #fdba74;
+  background: #fff7ed;
+}
+gk-badge[data-kind="may"] {
+  color: #1e40af;
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+gk-badge[data-kind="info"] {
+  color: #374151;
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+/* ---- 選んだ補足の根拠・原文の位置 ----
+ * 背景色で塗ると、文の途中に差し込んだ補足の行（インラインブロック）の上にも帯が出るので、
+ * 太い下線をマーカーのように使う（下線はインラインブロックの中には引かれない） */
+[data-gk-hl] {
+  text-decoration-line: underline !important;
+  text-decoration-style: solid !important;
+  text-decoration-color: rgb(250 204 21 / 0.55) !important;
+  text-decoration-thickness: 0.75em !important;
+  text-underline-offset: -0.55em !important;
+  text-decoration-skip-ink: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  gk-note,
+  gk-a {
+    transition: none !important;
+  }
+}

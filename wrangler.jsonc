@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gyokan",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-10-30",
+  // @cloudflare/puppeteer と @anthropic-ai/sdk が Node 互換 API を使うため
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    // Vue の SPA。/api/* だけ Worker が先に受け取る
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"],
+  },
+  // Browser Rendering（ヘッドレス Chrome）。ローカルの `vp dev` では Miniflare が手元に Chrome を起動する
+  "browser": { "binding": "BROWSER" },
+  // 補足データ（JSON）だけを短期キャッシュする。取得したページ本体は保存しない（SPEC 8章）
+  // id は未指定: デプロイ時に wrangler が自動作成する（または `wrangler kv namespace create CACHE` で作って書く）
+  "kv_namespaces": [{ "binding": "CACHE" }],
+  "vars": {
+    // 取得できるサイト。"*" はどの公開サイトも可（公的な性格のサイトはドメインで決められないため）。
+    // 絞るときは ".go.jp,.lg.jp,www.jlpt.jp" のように書く（"." で始まるものは末尾一致）。
+    // localhost・プライベート IP は ALLOW_PRIVATE_HOSTS=1 のとき以外は読まない
+    "ALLOWED_HOSTS": "*",
+    "CLAUDE_MODEL": "claude-opus-5-5",
+    "CLAUDE_EFFORT": "high",
+  },
+  "observability": { "enabled": true },
+}
