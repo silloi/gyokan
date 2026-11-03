@@ -147,6 +147,6 @@ local-notes/  実在のページに付けた補足（git 管理外）
 
 ## ライセンス
 
-未定（[PROGRESS.md](PROGRESS.md) の判断事項を参照）。
+MIT の予定です（LICENSE ファイルは公開のときに置きます）。
 
 色の値は、デジタル庁デザインシステムのデザイントークン（[@digital-go-jp/design-tokens](https://github.com/digital-go-jp/design-tokens)、MIT License、© デジタル庁）によります。
