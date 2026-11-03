@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref, shallowRef } from "vue";
+import { computed, onMounted, reactive, ref, shallowRef, watch } from "vue";
 import {
   LEVELS,
   type Level,
@@ -43,6 +43,10 @@ const status = reactive<Record<Level, LevelStatus>>({
 let controller: AbortController | null = null;
 
 const selectedNote = computed(() => notes.value.find((n) => n.id === selectedId.value) ?? null);
+// 選んだ補足が見えないレベルまでつまみを下げたら、選ぶのをやめる（原文の印とパネルを残さない）
+watch(level, (lv) => {
+  if (selectedNote.value && selectedNote.value.level > lv) selectedId.value = null;
+});
 const sentenceMap = computed(
   () => new Map((pageText.value?.sentences ?? []).map((s) => [s.id, s.text])),
 );
