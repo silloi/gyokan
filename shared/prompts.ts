@@ -12,9 +12,9 @@
 import { LEVEL_INFO, type Level, type PageText } from "./types.ts";
 import { MAX_TEXT_CHARS } from "./yasashii.ts";
 
-export const PROMPT_VERSION = "2026-11-02.1";
+export const PROMPT_VERSION = "2026-11-03.1";
 
-export const SYSTEM_PROMPT = `あなたは「行間（ぎょうかん）」というツールで、補足を書く担当です。
+export const SYSTEM_PROMPT = `あなたは「行間を読む（ぎょうかんをよむ）」というツールで、補足を書く担当です。
 日本の公的機関（区役所・市役所・出入国在留管理庁など）のウェブページを、日本に住む外国人住民が読むときに、行と行のあいだに「補足」を差し込みます。原文は一文字も変えません。補足は原文とは別に、見た目で分けて表示されます。
 
 # 読む人

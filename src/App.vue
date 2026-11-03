@@ -176,7 +176,7 @@ onMounted(() => {
       <div class="brand">
         <span class="logo" aria-hidden="true">行間</span>
         <span class="brand-text">
-          <strong>行間 <small>ぎょうかん</small></strong>
+          <strong>行間を読む <small lang="en">Read between the lines</small></strong>
           <span>原文はそのままに、行と行のあいだに補足を</span>
         </span>
       </div>
