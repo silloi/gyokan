@@ -8,7 +8,8 @@
  *      （ブロックにすると直前の行が「段落の最終行」扱いになり、両端揃えの字間が変わるため、インラインブロックにしている）
  *    - `contain: inline-size` により、補足の文字が親の幅（表の列幅など）に影響しない
  *    - 表示する補足が無い行は display: none（つまみ 0 では原文と同じ見た目）
- * 3. 単語への補足は、その単語の真下から始まるように左の余白を付ける
+ * 3. 単語への補足は、その単語の真下から始まるように左の余白を付ける。
+ *    補足の行の中は段に分け、重ならなければ上の段に横に並べる（pack.ts。階段状に積まない）
  * 画面の幅が変わると行の切れ目が変わるので、そのたびに測り直す（layout()）。
  */
 import {
@@ -21,11 +22,16 @@ import {
   type TextSeg,
 } from "../../shared/segment.ts";
 import { FORCE_LABEL, LEVEL_INFO, type Note, type SliderLevel } from "../../shared/types.ts";
+import { packRows } from "./pack.ts";
 
-/** 補足の文字の大きさ（px）。frame.css の gk-line と合わせる */
-const NOTE_FONT_PX = 12;
 /** 語より左へずらしたとき、語の真下に印を付ける（ずれがこれより大きいとき） */
 const PIN_THRESHOLD_PX = 6;
+/** 同じ段に横に並べる補足どうしのすき間（px） */
+const NOTE_GAP_PX = 8;
+/** 測り直しのあいだ html に付けるクラス。付け替えた補足が、もう一度広がる動きをしないようにする（frame.css） */
+const STATIC_CLASS = "gk-static";
+/** 一度並べた補足の印。新しく届いた補足だけが、広がりながら現れる */
+const PLACED_ATTR = "data-gk-placed";
 
 /** 補足に付けるバッジ（レベルは色で、どの語かは位置で分かるので、ラベルや語は書かない） */
 function badgesOf(note: Note): { text: string; kind: string; before: boolean }[] {
@@ -43,22 +49,14 @@ function badgesOf(note: Note): { text: string; kind: string; before: boolean }[]
   return badges;
 }
 
-/** 補足を1行で表示したときの幅の見積もり（和文はほぼ1文字＝1em。バッジや余白の分を足す） */
-function estimateWidth(note: Note): number {
-  const em = (text: string) =>
-    Array.from(text).reduce((w, c) => w + (/[\x20-\x7e]/.test(c) ? 0.55 : 1), 0);
-  // バッジは 10px の文字＋余白
-  const badges = badgesOf(note).reduce((w, b) => w + b.text.length * (10 / NOTE_FONT_PX) + 1.2, 0);
-  // 約物などで少し広がるので、1文字分の余裕を足す
-  return NOTE_FONT_PX * (em(note.text) + badges + 1) + 12;
-}
-
 export interface RenderState {
   doc: Document;
   seg: Segmentation;
   notes: Map<string, Note>;
   /** 補足の要素（測り直しのたびに作り直さず、付け替える） */
   noteEls: Map<string, Element>;
+  /** 補足を1行で表示したときの幅（px）。画面の幅には左右されないので、新しい補足だけを測る */
+  widths: Map<string, number>;
   blockNotes: Map<string, Note[]>;
   blockOf: Map<string, SegBlock>;
   sentenceIndex: Map<string, number>;
@@ -71,6 +69,7 @@ export function createRenderState(doc: Document, seg: Segmentation): RenderState
     seg,
     notes: new Map(),
     noteEls: new Map(),
+    widths: new Map(),
     blockNotes: new Map(),
     blockOf: new Map(seg.sentences.map((s) => [s.id, blocks.get(s.blockId)!])),
     sentenceIndex: new Map(seg.sentences.map((s, i) => [s.id, i])),
@@ -312,10 +311,41 @@ function isFlowLayout(doc: Document, container: Element): boolean {
   return !/flex|grid/.test(display);
 }
 
-/** 補足の行を作り直す。幅が変わったとき・補足が増えたときに呼ぶ */
+/**
+ * まだ幅を測っていない補足を、見えない入れ物（gk-probe）に複製して並べる。
+ * 原文の行を測るのと同じ1回のレイアウトで測れるよう、行を測る前に置き、測り終えたら外す。
+ */
+function placeWidthProbe(
+  state: RenderState,
+): { probe: Element; boxes: Map<string, Element> } | null {
+  const { doc } = state;
+  const probe = el(doc, "gk-probe", undefined, { [UI_ATTR]: "", "aria-hidden": "true" });
+  const boxes = new Map<string, Element>();
+  for (const [id, node] of state.noteEls) {
+    if (state.widths.has(id)) continue;
+    const copy = node.cloneNode(true) as Element;
+    copy.removeAttribute("style");
+    copy.querySelector("gk-pin")?.remove();
+    probe.append(copy);
+    boxes.set(id, copy.querySelector("gk-box")!);
+  }
+  if (!boxes.size) return null;
+  doc.body.append(probe);
+  return { probe, boxes };
+}
+
+/** 測っておいた補足の幅を捨てる（Web フォントが読み込まれて字の幅が変わったときなど） */
+export function forgetWidths(state: RenderState): void {
+  state.widths.clear();
+}
+
+/** 補足の行を作り直す。幅が変わったとき・補足が増えたときに呼ぶ（つまみを動かしたときは呼ばなくてよい） */
 export function layout(state: RenderState): void {
   const { doc } = state;
-  doc.querySelectorAll("gk-line").forEach((e) => e.remove());
+  const root = doc.documentElement;
+  root.classList.add(STATIC_CLASS);
+  doc.querySelectorAll("gk-line, gk-probe").forEach((e) => e.remove());
+  const probe = placeWidthProbe(state);
 
   // 1. まとめて測る（DOM を変える前に全部測ると、行の切れ目がずれない）
   const blocks = new Map(state.seg.blocks.map((b) => [b.id, b]));
@@ -349,16 +379,33 @@ export function layout(state: RenderState): void {
       base: contentBox(doc, container),
     });
   }
+  if (probe) {
+    for (const [id, box] of probe.boxes) state.widths.set(id, box.getBoundingClientRect().width);
+    probe.probe.remove();
+  }
+  const widths = state.widths;
 
   // 2. 差し込む（同じブロックの中は後ろの行から。前の行の位置がずれないように）
   for (const { m, byLine, container, inFlow, base } of plans) {
     const lineNos = [...byLine.keys()].sort((a, b) => b - a);
     for (const lineNo of lineNos) {
       const items = byLine.get(lineNo)!;
-      // 単語への補足は左から順に、文への補足はそのあとにレベル順で
-      items.sort(
-        (a, b) => (a.left ?? Infinity) - (b.left ?? Infinity) || a.note.level - b.note.level,
+      // 単語への補足は、その単語の真下から始める（文への補足と、flex / grid の中の補足は行の左端から）
+      const wants = items.map(({ left }) => (left !== null && inFlow ? left - base.left : 0));
+      // 重ならなければ上の段に横に並べる。1行に収まらないものは左へずらす
+      const packed = packRows(
+        items.map(({ note }, i) => ({
+          want: wants[i]!,
+          width: widths.get(note.id) ?? base.width,
+          level: note.level,
+        })),
+        base.width,
+        NOTE_GAP_PX,
       );
+      // 読む順（キーボードで移る順・読み上げの順）は、上の段から、左から
+      const order = items
+        .map((_, i) => i)
+        .sort((a, b) => packed[a]!.row - packed[b]!.row || packed[a]!.x - packed[b]!.x);
       const levels = [...new Set(items.map((i) => i.note.level))].sort((a, b) => a - b).join(" ");
       const line = el(doc, "gk-line", undefined, {
         [UI_ATTR]: "",
@@ -368,19 +415,20 @@ export function layout(state: RenderState): void {
       });
       const inner = el(doc, "gk-line-in");
       line.append(inner);
-      for (const { note, left } of items) {
-        const node = state.noteEls.get(note.id)!;
+      for (const i of order) {
+        const { note } = items[i]!;
+        const { row, x } = packed[i]!;
+        const node = state.noteEls.get(note.id) as HTMLElement;
+        node.style.setProperty("grid-row", String(row + 1));
+        node.style.setProperty("margin-left", `${x}px`);
         inner.append(node);
-        // 単語への補足は、その単語の真下から始める。ただし1行に収まらなくなるなら、収まるところまで左へ戻す
+        // 左へずらしたときは、どの語への補足かが位置で分かるよう、語の真下に小さな印（▲）を付ける
         const box = node.querySelector("gk-box") as HTMLElement;
         box.querySelector("gk-pin")?.remove();
-        const want = left !== null && inFlow ? left - base.left : 0;
-        const indent = Math.max(0, Math.min(want, base.width - estimateWidth(note)));
-        box.style.setProperty("margin-left", `${Math.round(indent)}px`);
-        // 左へずらしたときは、どの語への補足かが位置で分かるよう、語の真下に小さな印（▲）を付ける
-        if (want - indent > PIN_THRESHOLD_PX) {
+        const shift = wants[i]! - x;
+        if (shift > PIN_THRESHOLD_PX) {
           const pin = el(doc, "gk-pin", undefined, { "aria-hidden": "true" }) as HTMLElement;
-          pin.style.setProperty("left", `${Math.round(want - indent)}px`);
+          pin.style.setProperty("left", `${Math.round(shift)}px`);
           box.prepend(pin);
         }
       }
@@ -400,6 +448,14 @@ export function layout(state: RenderState): void {
       }
     }
   }
+
+  // 3. 付け替えた補足は、動きを止めたままスタイルを確定させてから元に戻す
+  //    （付け替えた要素は @starting-style でもう一度広がろうとするため）。
+  //    付け替えた要素のスタイルを読むと、文書全体のスタイルの計算が済む（レイアウトまではしない）
+  const moved = doc.querySelector(`gk-line gk-note[${PLACED_ATTR}]`);
+  if (moved) doc.defaultView?.getComputedStyle(moved).getPropertyValue("opacity");
+  root.classList.remove(STATIC_CLASS);
+  for (const node of state.noteEls.values()) node.setAttribute(PLACED_ATTR, "");
 }
 
 export function applyLevel(doc: Document, level: SliderLevel): void {

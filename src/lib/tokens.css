@@ -1,0 +1,113 @@
+/*
+ * 色のトークン。アプリ（style.css）と、原文を表示する iframe（frame.css）の両方で使う。
+ *
+ * 値は、デジタル庁デザインシステムのカラートークン
+ * （@digital-go-jp/design-tokens 2.1.0、MIT License、© デジタル庁）のプリミティブカラーから選んでいる。
+ * 下の --gk-dads-* がパッケージの値と同じであることは tokens.test.ts で確かめている。
+ * iframe の中では元のページの変数とぶつからないよう、名前はすべて --gk- で始める。
+ *
+ * つまみのレベルの色の考え方（デザインシステムの「カラー：アクセシビリティ」に沿う。数値は tokens.test.ts で確かめる）:
+ * - 濃い色（--gk-lN）はチップの白い文字の背景やつまみの文字にも使うので、白に対してコントラスト比 4.5:1 以上
+ * - いちばん多く並ぶ「ことば」と「言い回し」は、青とオレンジ（色覚の型によらず見分けやすい組み合わせ）
+ * - 色覚シミュレーション（P型・D型・T型の2色覚）でも、ことば・言い回し・文脈の3色が見分けられる色差にする
+ * - 色だけで区別しない: ことばの語には点線の下線、言い回しの語にはマーカー、
+ *   文脈・前提は文への補足（行の左端から）、前提は線を破線にして必ず「推測」と書く
+ */
+:root {
+  /* ---- デジタル庁デザインシステムのプリミティブカラー（使うものだけ） ---- */
+  --gk-dads-blue-50: #e8f1fe;
+  --gk-dads-blue-100: #d9e6ff;
+  --gk-dads-blue-300: #9db7f9;
+  --gk-dads-blue-900: #0017c1;
+  --gk-dads-blue-1000: #00118f;
+  --gk-dads-cyan-50: #e9f7f9;
+  --gk-dads-cyan-900: #006f83;
+  --gk-dads-green-800: #197a4b;
+  --gk-dads-green-900: #115a36;
+  --gk-dads-yellow-50: #fbf5e0;
+  --gk-dads-yellow-300: #ffd43d;
+  --gk-dads-yellow-400: #ffc700;
+  --gk-dads-yellow-1100: #6e5600;
+  --gk-dads-yellow-1200: #604b00;
+  --gk-dads-orange-50: #ffeee2;
+  --gk-dads-orange-100: #ffdfca;
+  --gk-dads-orange-200: #ffc199;
+  --gk-dads-orange-300: #ffa66d;
+  --gk-dads-orange-800: #c74700;
+  --gk-dads-orange-1000: #8b3200;
+  --gk-dads-red-50: #fdeeee;
+  --gk-dads-red-200: #ffbbbb;
+  --gk-dads-red-900: #ce0000;
+  --gk-dads-red-1000: #a90000;
+  --gk-dads-red-1100: #850000;
+  --gk-dads-magenta-50: #f3e5f4;
+  --gk-dads-magenta-800: #aa00aa;
+  --gk-dads-white: #ffffff;
+  --gk-dads-black: #000000;
+  --gk-dads-solid-gray-50: #f2f2f2;
+  --gk-dads-solid-gray-100: #e6e6e6;
+  --gk-dads-solid-gray-200: #cccccc;
+  --gk-dads-solid-gray-420: #949494;
+  --gk-dads-solid-gray-600: #666666;
+  --gk-dads-solid-gray-700: #4d4d4d;
+  --gk-dads-solid-gray-800: #333333;
+  --gk-dads-solid-gray-900: #1a1a1a;
+
+  /* ---- つまみのレベル（濃い色: 線・語の印・チップ・つまみ／-bg: 補足の背景） ---- */
+  --gk-l1: var(--gk-dads-blue-900);
+  --gk-l1-bg: var(--gk-dads-blue-100);
+  --gk-l2: var(--gk-dads-orange-800);
+  --gk-l2-bg: var(--gk-dads-orange-100);
+  /* 言い回しの語に引くマーカー */
+  --gk-l2-mark: var(--gk-dads-orange-200);
+  --gk-l3: var(--gk-dads-cyan-900);
+  --gk-l3-bg: var(--gk-dads-cyan-50);
+  --gk-l4: var(--gk-dads-magenta-800);
+  --gk-l4-bg: var(--gk-dads-magenta-50);
+
+  /* ---- 文字・面・線 ---- */
+  --gk-ink: var(--gk-dads-solid-gray-900);
+  --gk-ink-sub: var(--gk-dads-solid-gray-800);
+  /* 補助の文字（白・薄いグレーの背景の上で 4.5:1 以上） */
+  --gk-muted: var(--gk-dads-solid-gray-600);
+  /* 枠線・区切り線（隣の背景に対して 3:1 以上） */
+  --gk-line: var(--gk-dads-solid-gray-420);
+  --gk-surface: var(--gk-dads-white);
+  --gk-canvas: var(--gk-dads-solid-gray-50);
+  --gk-link: var(--gk-dads-blue-1000);
+  /* アプリのキーカラー（ロゴ・ボタン・選んでいるタブ）。レベルの4色とは別の色相にする */
+  --gk-brand: var(--gk-dads-green-900);
+  /* つまみのバーの、つまみより右（まだ選んでいない側） */
+  --gk-track: var(--gk-dads-solid-gray-100);
+  /* フォーカスの印（黄と黒の2重。デザインシステムのフォーカスカラー） */
+  --gk-focus: var(--gk-dads-yellow-300);
+  --gk-focus-ring: var(--gk-dads-black);
+  /* 選んだ補足の、原文の部分（マーカー） */
+  --gk-highlight: var(--gk-dads-yellow-300);
+
+  /* ---- バッジ・お知らせ（文字の色は背景に対して 4.5:1 以上） ---- */
+  --gk-guess: var(--gk-dads-red-900);
+  --gk-guess-bg: var(--gk-dads-red-50);
+  --gk-guess-line: var(--gk-dads-red-200);
+  --gk-general: var(--gk-dads-yellow-1100);
+  --gk-general-bg: var(--gk-dads-yellow-50);
+  --gk-general-line: var(--gk-dads-yellow-400);
+  --gk-must-bg: var(--gk-dads-red-900);
+  --gk-must-not-bg: var(--gk-dads-red-1100);
+  --gk-should: var(--gk-dads-orange-1000);
+  --gk-should-bg: var(--gk-dads-orange-50);
+  --gk-should-line: var(--gk-dads-orange-300);
+  --gk-may: var(--gk-dads-blue-1000);
+  --gk-may-bg: var(--gk-dads-blue-50);
+  --gk-may-line: var(--gk-dads-blue-300);
+  --gk-info: var(--gk-dads-solid-gray-700);
+  --gk-info-bg: var(--gk-dads-solid-gray-50);
+  --gk-info-line: var(--gk-dads-solid-gray-200);
+  --gk-page: var(--gk-dads-green-800);
+  --gk-error: var(--gk-dads-red-1000);
+  --gk-error-bg: var(--gk-dads-red-50);
+  --gk-warn: var(--gk-dads-orange-1000);
+  --gk-warn-bg: var(--gk-dads-orange-50);
+  --gk-caution: var(--gk-dads-yellow-1200);
+  --gk-caution-bg: var(--gk-dads-yellow-50);
+}

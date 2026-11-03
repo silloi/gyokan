@@ -1,23 +1,16 @@
 /*
- * iframe の中（原文のページ）に差し込むスタイル。
+ * iframe の中（原文のページ）に差し込むスタイル。色は tokens.css（frame.ts で先に差し込む）。
  * 原文には手を加えず、行の下に差し込む補足（gk-*）の見た目だけを足す。
- * 補足は「原文とは別のもの」と一目で分かるよう、小さめの文字・色つきの線と背景・ラベルで区別する。
+ * 補足は「原文とは別のもの」と一目で分かるよう、小さめの文字・色つきの線と背景で区別する。
  */
 :root {
-  --gk-l1: #0e7490;
-  --gk-l1-bg: #ecfeff;
-  --gk-l2: #15803d;
-  --gk-l2-bg: #f0fdf4;
-  --gk-l3: #6d28d9;
-  --gk-l3-bg: #f5f3ff;
-  --gk-l4: #c2410c;
-  --gk-l4-bg: #fff7ed;
   --gk-font:
     "BIZ UDPGothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", system-ui,
     sans-serif;
 }
 
-/* ---- 補足がついた原文の語（つまみがそのレベル以上のときだけ印を付ける） ---- */
+/* ---- 補足がついた原文の語（つまみがそのレベル以上のときだけ印を付ける）----
+ * 色だけに頼らないよう、ことばは点線の下線、言い回しはマーカーと、形も変える */
 gk-a {
   transition: background-color 0.3s ease;
 }
@@ -26,8 +19,13 @@ html.gk-l1 gk-a[data-level="1"] {
   text-underline-offset: 0.28em;
   cursor: pointer;
 }
+/* マーカーは太い下線で引く（背景で塗ると、語が行をまたぐとき、途中に差し込んだ補足の行の上にも帯が出る。
+ * 下線はインラインブロックの中には引かれず、文字の下に描かれる） */
 html.gk-l2 gk-a[data-level="2"] {
-  background-image: linear-gradient(transparent 62%, rgb(21 128 61 / 0.2) 62%);
+  text-decoration: underline solid var(--gk-l2-mark);
+  text-decoration-thickness: 0.38em;
+  text-underline-offset: -0.26em;
+  text-decoration-skip-ink: none;
   cursor: pointer;
 }
 
@@ -44,6 +42,12 @@ gk-line {
   vertical-align: top;
   /* 補足の文字が、親の幅（表の列幅・浮動要素の幅など）の計算に影響しないようにする */
   contain: inline-size;
+  /* つまみを動かして補足が広がっても、読んでいる原文の位置がずれないよう、スクロールの基準にしない */
+  overflow-anchor: none;
+}
+/* 補足の文字の設定（gk-probe は幅を測るための見えない入れ物。同じ設定で測る） */
+gk-line,
+gk-probe {
   text-indent: 0;
   text-align: left;
   text-transform: none;
@@ -54,7 +58,7 @@ gk-line {
   overflow-wrap: anywhere;
   font: 400 12px / 1.5 var(--gk-font);
   font-style: normal;
-  color: #1f2937;
+  color: var(--gk-ink);
   text-shadow: none;
 }
 html.gk-l1 gk-line[data-levels~="1"],
@@ -63,20 +67,47 @@ html.gk-l3 gk-line[data-levels~="3"],
 html.gk-l4 gk-line[data-levels~="4"] {
   display: inline-block;
 }
+/* 補足を段に並べるグリッド。補足ごとに、何段目か（grid-row）と左の位置（margin-left）を render.ts が決める。
+ * 同じ段の補足は同じマス目に重ねて置き、それぞれ左の余白で横に並べる（重ならないよう render.ts が並べる）。
+ * 見えないレベルの補足は高さ 0 に畳むので、見えない補足だけの段は高さ 0 になる */
 gk-line-in {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  align-items: start;
   padding: 1px 0 3px;
 }
 
+/* 幅を測るための見えない入れ物（測ったらすぐ外す）。中の補足は1行で表示したときの幅になる */
+gk-probe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+gk-probe gk-box {
+  width: max-content !important;
+  max-width: none !important;
+}
+
 gk-note {
+  grid-column: 1;
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
-  margin: 0;
+  margin-block: 0;
+  /* 畳んだ補足は、キーボードでも読み上げでも飛ばす（畳み終わってから隠す） */
+  visibility: hidden;
   transition:
     grid-template-rows 0.45s ease,
     opacity 0.35s ease,
-    margin 0.45s ease;
+    margin-block 0.45s ease,
+    visibility 0s linear 0.45s;
 }
 html.gk-l1 gk-note[data-level="1"],
 html.gk-l2 gk-note[data-level="2"],
@@ -84,7 +115,9 @@ html.gk-l3 gk-note[data-level="3"],
 html.gk-l4 gk-note[data-level="4"] {
   grid-template-rows: 1fr;
   opacity: 1;
-  margin: 1px 0;
+  margin-block: 1px;
+  visibility: visible;
+  transition-delay: 0s;
 }
 /* 行ごと表示されたときも、じわじわ広がる */
 @starting-style {
@@ -94,8 +127,12 @@ html.gk-l4 gk-note[data-level="4"] {
   html.gk-l4 gk-note[data-level="4"] {
     grid-template-rows: 0fr;
     opacity: 0;
-    margin: 0;
+    margin-block: 0;
   }
+}
+/* 測り直しで付け替えた補足は、もう一度広がる動きをしない（新しく届いた補足だけが広がる） */
+html.gk-static gk-note[data-gk-placed] {
+  transition: none !important;
 }
 gk-in {
   display: block;
@@ -109,7 +146,7 @@ gk-box {
   width: fit-content;
   max-width: 100%;
   padding: 1px 6px 1px 6px;
-  border-left: 2px solid var(--gk-c);
+  border-left: 3px solid var(--gk-c);
   border-radius: 0 4px 4px 0;
   background: var(--gk-bg);
   cursor: pointer;
@@ -130,15 +167,25 @@ gk-note[data-level="4"] {
   --gk-c: var(--gk-l4);
   --gk-bg: var(--gk-l4-bg);
 }
-gk-note:hover gk-box,
-gk-note:focus-visible gk-box {
+/* 書かれていない前提は推測を含むので、線を破線にする（色だけでなく形でも区別する） */
+gk-note[data-level="4"] gk-box {
+  border-left-style: dashed;
+}
+gk-note:hover gk-box {
   filter: brightness(0.96);
 }
-gk-note:focus-visible {
-  outline: none;
+/* 枠は gk-note に付ける（gk-box の外側は gk-in で切り取られるため） */
+gk-note {
+  border-radius: 0 4px 4px 0;
 }
-gk-note[data-selected] gk-box {
+gk-note[data-selected] {
   box-shadow: 0 0 0 2px var(--gk-c);
+}
+/* キーボードで選んでいる補足（デザインシステムのフォーカスの印: 黄と黒の2重） */
+gk-note:focus-visible {
+  outline: 4px solid var(--gk-focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--gk-focus);
 }
 /* 補足を語より左へずらしたときに、語の真下に付ける印（▲） */
 gk-pin {
@@ -153,7 +200,7 @@ gk-pin {
   pointer-events: none;
 }
 gk-t {
-  color: #111827;
+  color: var(--gk-ink);
 }
 gk-badge {
   display: inline-block;
@@ -173,48 +220,48 @@ gk-badge + gk-badge {
   margin-left: 3px;
 }
 gk-badge[data-kind="guess"] {
-  color: #b91c1c;
-  border-color: #fca5a5;
-  background: #fff1f2;
+  color: var(--gk-guess);
+  border-color: var(--gk-guess-line);
+  background: var(--gk-guess-bg);
 }
 gk-badge[data-kind="general"] {
-  color: #92400e;
-  border-color: #fcd34d;
-  background: #fffbeb;
+  color: var(--gk-general);
+  border-color: var(--gk-general-line);
+  background: var(--gk-general-bg);
 }
 gk-badge[data-kind="must"] {
-  color: #fff;
-  border-color: #b91c1c;
-  background: #b91c1c;
+  color: var(--gk-surface);
+  border-color: var(--gk-must-bg);
+  background: var(--gk-must-bg);
 }
 gk-badge[data-kind="must_not"] {
-  color: #fff;
-  border-color: #7f1d1d;
-  background: #7f1d1d;
+  color: var(--gk-surface);
+  border-color: var(--gk-must-not-bg);
+  background: var(--gk-must-not-bg);
 }
 gk-badge[data-kind="should"] {
-  color: #9a3412;
-  border-color: #fdba74;
-  background: #fff7ed;
+  color: var(--gk-should);
+  border-color: var(--gk-should-line);
+  background: var(--gk-should-bg);
 }
 gk-badge[data-kind="may"] {
-  color: #1e40af;
-  border-color: #93c5fd;
-  background: #eff6ff;
+  color: var(--gk-may);
+  border-color: var(--gk-may-line);
+  background: var(--gk-may-bg);
 }
 gk-badge[data-kind="info"] {
-  color: #374151;
-  border-color: #d1d5db;
-  background: #f9fafb;
+  color: var(--gk-info);
+  border-color: var(--gk-info-line);
+  background: var(--gk-info-bg);
 }
 
 /* ---- 選んだ補足の根拠・原文の位置 ----
  * 背景色で塗ると、文の途中に差し込んだ補足の行（インラインブロック）の上にも帯が出るので、
- * 太い下線をマーカーのように使う（下線はインラインブロックの中には引かれない） */
+ * 太い下線をマーカーのように使う（下線はインラインブロックの中には引かれない。文字の下に描かれる） */
 [data-gk-hl] {
   text-decoration-line: underline !important;
   text-decoration-style: solid !important;
-  text-decoration-color: rgb(250 204 21 / 0.55) !important;
+  text-decoration-color: var(--gk-highlight) !important;
   text-decoration-thickness: 0.75em !important;
   text-underline-offset: -0.55em !important;
   text-decoration-skip-ink: none !important;

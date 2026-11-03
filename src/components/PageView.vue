@@ -12,6 +12,7 @@ import {
   addNotes,
   applyLevel,
   createRenderState,
+  forgetWidths,
   highlightNote,
   layout,
   noteIdAt,
@@ -120,8 +121,14 @@ function onLoad() {
   applyLevel(doc, props.level);
   addNotes(state, props.notes);
   relayout();
-  // Web フォントで字の幅が変わると折り返しも変わるので、読み込み後に測り直す
-  doc.fonts?.ready.then(() => relayout()).catch(() => undefined);
+  // Web フォントで字の幅が変わると折り返しも補足の幅も変わるので、読み込み後に測り直す
+  doc.fonts?.ready
+    .then(() => {
+      if (state?.doc !== doc) return;
+      forgetWidths(state);
+      relayout();
+    })
+    .catch(() => undefined);
   emit("ready", { title: doc.title, sentences: seg.sentences });
 }
 

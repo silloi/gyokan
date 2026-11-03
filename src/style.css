@@ -1,15 +1,11 @@
 :root {
-  --ink: #1f2933;
-  --muted: #5b6673;
-  --line: #d9dee5;
-  --bg: #f4f6f8;
-  --surface: #fff;
-  --brand: #134e4a;
-  --brand-soft: #e6f2f0;
-  --l1: #0e7490;
-  --l2: #15803d;
-  --l3: #6d28d9;
-  --l4: #c2410c;
+  /* 色はすべて tokens.css（デジタル庁デザインシステムのカラートークン）から */
+  --ink: var(--gk-ink);
+  --muted: var(--gk-muted);
+  --line: var(--gk-line);
+  --bg: var(--gk-canvas);
+  --surface: var(--gk-surface);
+  --brand: var(--gk-brand);
   --font:
     "BIZ UDPGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo,
     system-ui, sans-serif;
@@ -62,7 +58,7 @@ textarea {
   height: 44px;
   border-radius: 10px;
   background: var(--brand);
-  color: #fff;
+  color: var(--surface);
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.04em;
@@ -126,7 +122,7 @@ textarea {
   padding: 8px 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
 }
 .source-form textarea {
   resize: vertical;
@@ -136,7 +132,7 @@ textarea {
   border: 0;
   border-radius: 8px;
   background: var(--brand);
-  color: #fff;
+  color: var(--surface);
   font-weight: 700;
   cursor: pointer;
 }
@@ -185,10 +181,16 @@ textarea {
   appearance: none;
   height: 8px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--l1) 0%, var(--l2) 33%, var(--l3) 66%, var(--l4) 100%);
-  background-size: var(--pos) 100%;
-  background-repeat: no-repeat;
-  background-color: #e3e7ec;
+  /* 0〜1 の区間はことば、1〜2 は言い回し…と、区間ごとにそのレベルの色で塗る。つまみより右はグレー */
+  background:
+    linear-gradient(90deg, transparent var(--pos), var(--gk-track) var(--pos)),
+    linear-gradient(
+      90deg,
+      var(--gk-l1) 0 25%,
+      var(--gk-l2) 25% 50%,
+      var(--gk-l3) 50% 75%,
+      var(--gk-l4) 75%
+    );
   cursor: pointer;
 }
 .dial-range::-webkit-slider-thumb {
@@ -196,7 +198,7 @@ textarea {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   border: 3px solid var(--brand);
   box-shadow: 0 1px 4px rgb(0 0 0 / 0.25);
 }
@@ -204,7 +206,7 @@ textarea {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   border: 3px solid var(--brand);
 }
 .dial-range:disabled {
@@ -243,16 +245,16 @@ textarea {
   font-weight: 700;
 }
 .stop-1.is-on .stop-name {
-  color: var(--l1);
+  color: var(--gk-l1);
 }
 .stop-2.is-on .stop-name {
-  color: var(--l2);
+  color: var(--gk-l2);
 }
 .stop-3.is-on .stop-name {
-  color: var(--l3);
+  color: var(--gk-l3);
 }
 .stop-4.is-on .stop-name {
-  color: var(--l4);
+  color: var(--gk-l4);
 }
 .stop-status {
   font-size: 11px;
@@ -263,7 +265,7 @@ textarea {
   animation: pulse 1.2s ease-in-out infinite;
 }
 .stop-status[data-state="error"] {
-  color: #b91c1c;
+  color: var(--gk-error);
 }
 @keyframes pulse {
   50% {
@@ -292,12 +294,12 @@ textarea {
   border-radius: 6px;
 }
 .notice.is-warn {
-  background: #fff7ed;
-  color: #9a3412;
+  background: var(--gk-warn-bg);
+  color: var(--gk-warn);
 }
 .notice.is-error {
-  background: #fef2f2;
-  color: #991b1b;
+  background: var(--gk-error-bg);
+  color: var(--gk-error);
 }
 
 /* ---- 本文とパネル ---- */
@@ -309,7 +311,7 @@ textarea {
 }
 .viewer {
   min-height: 0;
-  background: #fff;
+  background: var(--surface);
   border-right: 1px solid var(--line);
 }
 .page-frame {
@@ -317,7 +319,7 @@ textarea {
   width: 100%;
   height: 100%;
   border: 0;
-  background: #fff;
+  background: var(--surface);
 }
 .empty {
   max-width: 680px;
@@ -368,22 +370,22 @@ textarea {
   display: inline-block;
   padding: 1px 10px;
   border-radius: 999px;
-  color: #fff;
+  color: var(--surface);
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
 }
 .chip[data-level="1"] {
-  background: var(--l1);
+  background: var(--gk-l1);
 }
 .chip[data-level="2"] {
-  background: var(--l2);
+  background: var(--gk-l2);
 }
 .chip[data-level="3"] {
-  background: var(--l3);
+  background: var(--gk-l3);
 }
 .chip[data-level="4"] {
-  background: var(--l4);
+  background: var(--gk-l4);
 }
 .badge {
   display: inline-block;
@@ -394,34 +396,34 @@ textarea {
   white-space: nowrap;
 }
 .badge[data-kind="guess"] {
-  color: #b91c1c;
-  border-color: #fca5a5;
-  background: #fff1f2;
+  color: var(--gk-guess);
+  border-color: var(--gk-guess-line);
+  background: var(--gk-guess-bg);
 }
 .badge[data-kind="must"] {
-  color: #fff;
-  border-color: #b91c1c;
-  background: #b91c1c;
+  color: var(--surface);
+  border-color: var(--gk-must-bg);
+  background: var(--gk-must-bg);
 }
 .badge[data-kind="must_not"] {
-  color: #fff;
-  border-color: #7f1d1d;
-  background: #7f1d1d;
+  color: var(--surface);
+  border-color: var(--gk-must-not-bg);
+  background: var(--gk-must-not-bg);
 }
 .badge[data-kind="should"] {
-  color: #9a3412;
-  border-color: #fdba74;
-  background: #fff7ed;
+  color: var(--gk-should);
+  border-color: var(--gk-should-line);
+  background: var(--gk-should-bg);
 }
 .badge[data-kind="may"] {
-  color: #1e40af;
-  border-color: #93c5fd;
-  background: #eff6ff;
+  color: var(--gk-may);
+  border-color: var(--gk-may-line);
+  background: var(--gk-may-bg);
 }
 .badge[data-kind="info"] {
-  color: #374151;
-  border-color: #d1d5db;
-  background: #f9fafb;
+  color: var(--gk-info);
+  border-color: var(--gk-info-line);
+  background: var(--gk-info-bg);
 }
 .anchor {
   font-weight: 700;
@@ -436,7 +438,7 @@ textarea {
   line-height: 1.7;
 }
 .detail {
-  color: #374151;
+  color: var(--gk-ink-sub);
 }
 .evidence {
   border-top: 1px solid var(--line);
@@ -460,26 +462,26 @@ textarea {
   font-weight: 700;
 }
 .grounding[data-kind="page"] {
-  color: #166534;
+  color: var(--gk-page);
 }
 .grounding[data-kind="general"] {
-  color: #92400e;
+  color: var(--gk-general);
 }
 .grounding[data-kind="guess"] {
-  color: #b91c1c;
+  color: var(--gk-guess);
 }
 blockquote {
   margin: 0 0 2px;
   padding: 6px 10px;
-  border-left: 3px solid #9ca3af;
-  background: #f3f4f6;
+  border-left: 3px solid var(--line);
+  background: var(--bg);
   font-size: 14px;
 }
 .link {
   border: 0;
   background: none;
   padding: 0;
-  color: #0b57d0;
+  color: var(--gk-link);
   text-decoration: underline;
   cursor: pointer;
   text-align: left;
@@ -519,14 +521,14 @@ blockquote {
   margin-top: auto;
   padding: 10px;
   border-radius: 8px;
-  background: #fffbeb;
-  color: #78350f;
+  background: var(--gk-caution-bg);
+  color: var(--gk-caution);
   font-size: 12px;
 }
 .caution a {
   display: block;
   margin-top: 4px;
-  color: #0b57d0;
+  color: var(--gk-link);
 }
 
 /* ---- スマートフォン: パネルは下から出す ---- */

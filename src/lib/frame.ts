@@ -3,6 +3,7 @@
  * サーバー側でもサニタイズ済みだが、表示側でも同じ処理をして二重に守る。
  */
 import frameCss from "./frame.css?raw";
+import tokensCss from "./tokens.css?raw";
 
 /** 行間が下ごしらえした文書の印（初期の about:blank と区別する） */
 export const DOC_MARK = "data-gk-doc";
@@ -48,7 +49,8 @@ export function prepareDocument(html: string, baseUrl: string): string {
 
   const style = doc.createElement("style");
   style.setAttribute("data-gk-ui", "");
-  style.textContent = frameCss;
+  // 色のトークン（アプリと共通）と、補足の見た目
+  style.textContent = `${tokensCss}\n${frameCss}`;
   head.append(style);
 
   doc.documentElement.setAttribute(DOC_MARK, "");

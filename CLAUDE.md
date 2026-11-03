@@ -8,6 +8,9 @@
 - **補足は各行の下（`gk-line`）。原文の折り返しを変えない。** 補足の行は行末に入れる幅 100% のインラインブロックで、`<br>` で終わる行は `<br>` の直前に入れる（行頭の全角空白の字下げを動かさないため）。表示を変えたら、つまみ 0 と 4 で各行の始まりの文字が同じかを確かめる。
 - ふりがな（語の上の読み）は出さない。読みは根拠パネルにだけ出す。
 - 補足の行には本文とバッジ（かならず・推測など）だけを出す。レベルは色、どの語への補足かは位置で示し、レベル名や語は書かない（ツールチップ・`aria-label`・根拠パネルに出す）。
+- 1つの行の補足は段に分け、重ならないかぎり上の段に詰める（`src/lib/pack.ts`）。置く順番（レベルの低い順 → 左から）は変えない（つまみを動かしても見えている補足が動かないため）。つまみの切り替えでは測り直さない（CSS だけ）。
+- 色は `src/lib/tokens.css` のトークンだけを使い、`style.css`・`frame.css` に色を直接書かない。新しい色はデジタル庁デザインシステムのプリミティブカラー（devDependencies の `@digital-go-jp/design-tokens`）から選び、`--gk-dads-*` に写してから使う。iframe の中で衝突しないよう、変数名は `--gk-` で始める。色を変えたら `src/lib/tokens.test.ts`（デザインシステムの値との一致・コントラスト比・色覚シミュレーションでの色差）を通す。
+- 色だけで区別しない: ことばの語は点線の下線、言い回しの語はマーカー（太い下線。背景で塗ると差し込んだ補足の行の上にも帯が出る）、前提は左の線を破線にして「推測」を付ける。キーボードの印はデザインシステムのフォーカスの印（黄と黒の2重）。表示していないレベルの補足は `visibility: hidden`（キーボードでも読み上げでも飛ばす）。
 - 補足の根拠（evidence）は原文からの完全一致の引用。照合できないものは「推測」に下げる（`shared/validate.ts`）。レベル4は必ず「推測」を表示する。
 - 取得したページ本体は保存・再配布しない（キャッシュは補足データだけ）。実在のページの HTML・スクリーンショット・本文をリポジトリに入れない。実在のページに付けた補足は `local-notes/`（git 管理外、本文なし）。テスト用のページは架空のもの（`public/demo/`）を使う。
 - 補足の文章は `shared/yasashii.ts` の基準（短い文、敬語なし、行政語なし、レベル4は断定しない）に合わせる。下書きは `scripts/build-fixture.ts --strict` で検証してから使う。
@@ -20,7 +23,7 @@
 
 - `shared/` 共通: `segment.ts`（DOM の文分割・本文の範囲の推定）、`sentences.ts`（文分割・`<br>` の扱い）、`prompts.ts`（全レベル共通の system ＋レベル別の指示）、`generate.ts`（Claude 呼び出し＋書き直し）、`validate.ts`、`yasashii.ts`
 - `worker/` Cloudflare Worker: `/api/page`（Browser Rendering → fetch にフォールバック → HTMLRewriter でサニタイズ）、`/api/annotate`（fixture → 取り込んだ補足 → KV キャッシュ → Claude）、`/api/dev/import`（開発用、`DEV_TOOLS=1` のときだけ）、`hosts.ts`（取得してよいホスト）
-- `src/` Vue 3: `PageView.vue`（sandbox iframe に表示し、親から DOM を操作・幅が変わったら測り直す）、`lib/render.ts`（行を測って各行の下に補足を差し込む）、`lib/frame.css`（iframe 内のスタイル）
+- `src/` Vue 3: `PageView.vue`（sandbox iframe に表示し、親から DOM を操作・幅が変わったら測り直す）、`lib/render.ts`（行と補足の幅を測って各行の下に補足を差し込む）、`lib/pack.ts`（補足を段に詰める計算）、`lib/tokens.css`（色のトークン。アプリと iframe で共通）、`lib/frame.css`（iframe 内のスタイル）
 - `scripts/` CLI（`vpx` で実行）: `segment-page.ts`、`annotate-page.ts`、`build-fixture.ts`、`import-notes.ts`
 
 ## 開発メモ
