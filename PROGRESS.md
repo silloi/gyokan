@@ -31,6 +31,13 @@
 - Claude API のキー（`ANTHROPIC_API_KEY`）がこのセッションに無い。前のセッションで取り込んだ入管ページの補足も、コンテナが変わって消えた（`local-notes/` と開発用 KV）。
 - Cloudflare: `wrangler whoami` は「未認証」。ネットワークシークレットのトークンが、このセッションの通信に付いていない。
 
+**11/5（2回目のセッション）: 鍵がまだ届いていない**
+
+- `ANTHROPIC_API_KEY` はこのセッションの環境変数に無かった（`ant` のログインも無い）。Claude API での生成・Opus 5.5 と Fable 5.1 の比較・入管ページの生成は未実行。
+- Cloudflare も `wrangler whoami` は「未認証」のまま。api.cloudflare.com への通信にトークンが付かない（ネットワークシークレットに入っていないか、新しいセッションでしか効かない）。
+- Fable 5.1 で動かすための変更は要らないことを確かめた: `shared/generate.ts` は thinking を送らず、forced tool_choice を使わず、書き直しは会話の追記だけ（preserved thinking に合う）。effort（`output_config`）・構造化出力・`fallbacks: "default"` は Fable 5.1 でも使える。`--model claude-fable-5-1` か `CLAUDE_MODEL` で切り替えるだけで比べられる。
+- `vp check`・`vue-tsc -b`・`vp test` は通る。
+
 ## いまの状態
 
 **実在のページ（出入国在留管理庁「在留期間更新許可申請」）で、最初から最後まで動きます。**
