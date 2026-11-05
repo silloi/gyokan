@@ -2,6 +2,7 @@
  * 行間（gyokan）の Worker。静的アセット（Vue の SPA）は Cloudflare が配信し、/api/* だけここに来る。
  */
 import { handleAnnotate, handleImport } from "./annotate.ts";
+import { dailyLimit } from "./guard.ts";
 import { errorResponse, json } from "./http.ts";
 import { handlePage } from "./page.ts";
 
@@ -18,6 +19,7 @@ export default {
             cache: Boolean(env.CACHE),
             model: env.CLAUDE_MODEL,
             allowedHosts: env.ALLOWED_HOSTS,
+            dailyGenerations: dailyLimit(env),
           });
         case "/api/page":
           return await handlePage(request, env);

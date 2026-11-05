@@ -7,10 +7,12 @@
  */
 import Anthropic from "@anthropic-ai/sdk";
 import { generateNotes, GenerationError, type Effort } from "../shared/generate.ts";
+import { attachRefs } from "../shared/glossary.ts";
 import { pageHash } from "../shared/hash.ts";
 import { PROMPT_VERSION } from "../shared/prompts.ts";
 import type { AnnotateResponse, GeneratorInfo, Level, Note, PageText } from "../shared/types.ts";
 import { findFixture } from "./fixtures.ts";
+import { limitPerClient, reserveGeneration } from "./guard.ts";
 import { HttpError, json } from "./http.ts";
 
 const MAX_SENTENCES = 800;
@@ -66,7 +68,8 @@ export async function handleAnnotate(
       level,
       pageHash: hash,
       source,
-      notes: notes.filter((n) => n.level === level),
+      // 用語集の出典は、どこから来た補足にも同じ規則で付ける（取り込んだ補足・古いキャッシュにも）
+      notes: attachRefs(notes.filter((n) => n.level === level)),
       generator,
     });
 
@@ -92,6 +95,10 @@ export async function handleAnnotate(
       "Claude API キーが設定されていないため、このページの補足はまだ作れません（デモページと、補足を取り込んだページだけ表示できます）",
     );
   }
+
+  // ここから先は費用がかかるので、公開デモの守りを通す（1レベルで1回と数える）
+  await limitPerClient(env.CLAUDE_LIMITER, request, "補足の作成");
+  await reserveGeneration(env);
 
   const effort = EFFORTS.includes(env.CLAUDE_EFFORT as Effort)
     ? (env.CLAUDE_EFFORT as Effort)

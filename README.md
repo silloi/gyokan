@@ -63,18 +63,19 @@ vpx scripts/import-notes.ts local-notes/<name>.annotations.json
 
 ### よく使うコマンド
 
-| コマンド                                                     | 内容                                                  |
-| ------------------------------------------------------------ | ----------------------------------------------------- |
-| `vp dev`                                                     | 開発サーバー（Vue と Worker を一緒に起動）            |
-| `vp check`                                                   | 整形（Oxfmt）・Lint（Oxlint）・型チェック（tsgolint） |
-| `vp exec vue-tsc -b`                                         | Vue SFC を含めた型チェック                            |
-| `vp test`                                                    | テスト（Vitest）                                      |
-| `vp build`                                                   | 本番ビルド（`dist/client` と `dist/gyokan`）          |
-| `vp run deploy`                                              | ビルドして Cloudflare にデプロイ                      |
-| `vpx scripts/segment-page.ts <HTML or URL> [--api <origin>]` | ページを文分割して文 ID を表示                        |
-| `vpx scripts/annotate-page.ts <HTML or URL> --out x.json`    | Claude API で1ページ分の補足を生成                    |
-| `vpx scripts/build-fixture.ts <下書き.json> --strict`        | 補足の下書きを検証して fixture にする                 |
-| `vpx scripts/import-notes.ts <*.annotations.json>`           | 補足を開発用の KV に取り込む                          |
+| コマンド                                                       | 内容                                                  |
+| -------------------------------------------------------------- | ----------------------------------------------------- |
+| `vp dev`                                                       | 開発サーバー（Vue と Worker を一緒に起動）            |
+| `vp check`                                                     | 整形（Oxfmt）・Lint（Oxlint）・型チェック（tsgolint） |
+| `vp exec vue-tsc -b`                                           | Vue SFC を含めた型チェック                            |
+| `vp test`                                                      | テスト（Vitest）                                      |
+| `vp build`                                                     | 本番ビルド（`dist/client` と `dist/gyokan`）          |
+| `vp run deploy`                                                | ビルドして Cloudflare にデプロイ                      |
+| `vpx scripts/segment-page.ts <HTML or URL> [--api <origin>]`   | ページを文分割して文 ID を表示                        |
+| `vpx scripts/annotate-page.ts <HTML or URL> --out x.json`      | Claude API で1ページ分の補足を生成                    |
+| `vpx scripts/build-fixture.ts <下書き.json> --strict`          | 補足の下書きを検証して fixture にする                 |
+| `vpx scripts/import-notes.ts <*.annotations.json>`             | 補足を開発用の KV に取り込む                          |
+| `vpx scripts/build-glossary.ts <yasashii-refs のディレクトリ>` | 公的な用語集から `shared/glossary/` を作り直す        |
 
 ## 仕組み
 
@@ -152,3 +153,5 @@ local-notes/  実在のページに付けた補足（git 管理外）
 MIT の予定です（LICENSE ファイルは公開のときに置きます）。
 
 色の値は、デジタル庁デザインシステムのデザイントークン（[@digital-go-jp/design-tokens](https://github.com/digital-go-jp/design-tokens)、MIT License、© デジタル庁）によります。
+
+補足の根拠に使う用語集（`shared/glossary/`）は、[yasashii-refs](https://github.com/silloi/yasashii-refs) が公的な資料から作ったデータを、さらに加工したものです。出典の書き方は `shared/glossary/sources.json` の `attribution` にあります（やさしい日本語書き換え例・雇用管理に役立つ多言語用語集・法令用語日英標準対訳辞書は PDL1.0、年金用語集は日本年金機構のサイトの利用条件）。根拠パネルにも出典を出します。

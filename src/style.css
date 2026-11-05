@@ -457,6 +457,40 @@ textarea {
 .evidence li {
   margin-bottom: 8px;
 }
+.refs {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+.refs h3 {
+  font-size: 13px;
+  margin: 0 0 6px;
+  color: var(--muted);
+}
+.refs ul {
+  margin: 6px 0;
+  padding: 0;
+  list-style: none;
+}
+.refs li {
+  margin-bottom: 8px;
+}
+.refs li p {
+  margin: 0 0 2px;
+}
+.refs .en,
+.refs .attribution {
+  color: var(--muted);
+  font-size: 13px;
+}
+/* 出典は邪魔にならない大きさで */
+.refs .cite {
+  font-size: 12px;
+}
+.refs .attribution {
+  display: block;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
 .grounding {
   font-size: 13px;
   font-weight: 700;

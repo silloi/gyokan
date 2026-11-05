@@ -22,6 +22,15 @@
     "ALLOWED_HOSTS": "*",
     "CLAUDE_MODEL": "claude-opus-5-5",
     "CLAUDE_EFFORT": "high",
+    // Claude で補足を作る回数の、1日（日本時間）の上限（悪用されたときの歯止め。費用の管理ではない）。全体で数える。1ページは4回（レベルごと）。"0" で生成を止める
+    "DAILY_GENERATIONS": "1000",
   },
+  // 公開デモの守り: 同じ IP からの呼び出しを1分あたりの回数で制限する（worker/guard.ts）
+  "ratelimits": [
+    // ページの取得（Browser Rendering の利用枠を守る）
+    { "name": "PAGE_LIMITER", "namespace_id": "1001", "simple": { "limit": 6, "period": 60 } },
+    // Claude での生成（1ページ＝4レベルを1分に1ページまで）
+    { "name": "CLAUDE_LIMITER", "namespace_id": "1002", "simple": { "limit": 4, "period": 60 } },
+  ],
   "observability": { "enabled": true },
 }

@@ -10,6 +10,7 @@
  */
 import puppeteer, { type Browser } from "@cloudflare/puppeteer";
 import type { PageResponse } from "../shared/types.ts";
+import { limitPerClient } from "./guard.ts";
 import { HttpError, json } from "./http.ts";
 import { isAllowedHost, isPrivateHost } from "./hosts.ts";
 import { sanitizeHtml } from "./sanitize.ts";
@@ -149,6 +150,7 @@ async function fetchDirect(target: URL, warnings: string[]): Promise<Fetched> {
 export async function handlePage(request: Request, env: Env): Promise<Response> {
   const self = new URL(request.url);
   const target = parseTarget(self.searchParams.get("url"), env, self.hostname);
+  await limitPerClient(env.PAGE_LIMITER, request, "ページの取得");
   const warnings: string[] = [];
 
   let fetched: Fetched;

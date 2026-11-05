@@ -14,6 +14,7 @@ import {
   buildPageBlock,
   buildRepairInstruction,
 } from "./prompts.ts";
+import { attachRefs, buildGlossaryBlock, findTerms } from "./glossary.ts";
 import type { GeneratorInfo, Level, Note, PageText } from "./types.ts";
 import { styleProblems, validateNotes, type DroppedNote } from "./validate.ts";
 
@@ -99,8 +100,14 @@ export async function generateNotes(
     {
       role: "user",
       content: [
-        // ページ本文は全レベル共通なのでキャッシュする
-        { type: "text", text: buildPageBlock(page), cache_control: { type: "ephemeral" } },
+        // ページ本文と用語集は全レベル共通なのでキャッシュする
+        {
+          type: "text",
+          text: [buildPageBlock(page), buildGlossaryBlock(findTerms(page.sentences))]
+            .filter(Boolean)
+            .join("\n\n"),
+          cache_control: { type: "ephemeral" },
+        },
         { type: "text", text: buildLevelInstruction(level) },
       ],
     },
@@ -167,7 +174,7 @@ export async function generateNotes(
   }
 
   return {
-    notes,
+    notes: attachRefs(notes),
     dropped,
     generator: { kind: "claude-api", model: first.model, promptVersion: PROMPT_VERSION },
     usage,

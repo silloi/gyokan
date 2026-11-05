@@ -87,6 +87,18 @@ export interface Note {
   confidence: Confidence;
   /** 検証で見つかった問題（やさしい日本語の基準外、根拠の不一致など） */
   issues?: string[];
+  /** 公的な用語集の該当項目（shared/glossary.ts が anchor から機械的に付ける） */
+  refs?: NoteRef[];
+}
+
+/** 補足の参考にした公的な用語集の項目。出典の書き方は shared/glossary/sources.json */
+export interface NoteRef {
+  /** 用語集の id（sources.json の id） */
+  source: string;
+  term: string;
+  text?: string;
+  en?: string;
+  url?: string;
 }
 
 export interface GeneratorInfo {

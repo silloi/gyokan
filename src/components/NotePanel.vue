@@ -7,6 +7,12 @@ import {
   type Level,
   type Note,
 } from "../../shared/types.ts";
+import sourcesJson from "../../shared/glossary/sources.json";
+import type { GlossarySource } from "../../shared/glossary-types.ts";
+
+const SOURCES = new Map<string, GlossarySource>(
+  (sourcesJson as GlossarySource[]).map((s) => [s.id, s]),
+);
 
 const props = defineProps<{
   note: Note | null;
@@ -61,6 +67,25 @@ const LEVELS: Level[] = [1, 2, 3, 4];
             {{ sentences.get(note.sentenceId) }}
           </button>
         </p>
+      </section>
+
+      <section v-if="note.refs?.length" class="refs">
+        <h3>公的な用語集では</h3>
+        <ul>
+          <li v-for="(r, i) in note.refs" :key="i">
+            <p v-if="r.text">{{ r.text }}</p>
+            <p v-if="r.en" class="en" lang="en">{{ r.en }}</p>
+            <p class="cite">
+              <a
+                :href="r.url ?? SOURCES.get(r.source)?.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ SOURCES.get(r.source)?.name ?? r.source }}</a
+              >
+              <span class="attribution">{{ SOURCES.get(r.source)?.attribution }}</span>
+            </p>
+          </li>
+        </ul>
       </section>
 
       <details v-if="note.issues?.length" class="issues">
