@@ -38,6 +38,14 @@
 - Fable 5.1 で動かすための変更は要らないことを確かめた: `shared/generate.ts` は thinking を送らず、forced tool_choice を使わず、書き直しは会話の追記だけ（preserved thinking に合う）。effort（`output_config`）・構造化出力・`fallbacks: "default"` は Fable 5.1 でも使える。`--model claude-fable-5-1` か `CLAUDE_MODEL` で切り替えるだけで比べられる。
 - `vp check`・`vue-tsc -b`・`vp test` は通る。
 
+**11/5（3回目のセッション）: まだ鍵が届いていない**
+
+- `ANTHROPIC_API_KEY` は環境変数に無い（api.anthropic.com は 401）。api.anthropic.com はプロキシを通らないので、ネットワークシークレットでは付かない。**環境変数として**入れる必要がある。
+- Cloudflare も `wrangler whoami` は「未認証」。`CLOUDFLARE_API_TOKEN`（と `CLOUDFLARE_ACCOUNT_ID`）を環境変数に入れれば `wrangler` がそのまま使う。
+- 生成・Opus 5.5 と Fable 5.1 の比較・入管ページの生成・公開は未実行（鍵が入った新しいセッションで、2回目の手順のまま進められる）。
+- `pnpm install --frozen-lockfile` は pnpm-lock.yaml を「壊れている」として失敗する（`pnpm install` は通り、ロックファイルの変更は戻した）。
+- `vp check`・`vue-tsc -b`・`vp test`（72件）は通る。
+
 ## いまの状態
 
 **実在のページ（出入国在留管理庁「在留期間更新許可申請」）で、最初から最後まで動きます。**
