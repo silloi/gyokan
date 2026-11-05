@@ -55,15 +55,9 @@
 
 **まだできていないこと**
 
-- Cloudflare への公開。`wrangler whoami` は「未認証」のまま（トークンがこのセッションに届いていない）。
-
-**11/5（3回目のセッション）: まだ鍵が届いていない**
-
-- `ANTHROPIC_API_KEY` は環境変数に無い（api.anthropic.com は 401）。api.anthropic.com はプロキシを通らないので、ネットワークシークレットでは付かない。**環境変数として**入れる必要がある。
-- Cloudflare も `wrangler whoami` は「未認証」。`CLOUDFLARE_API_TOKEN`（と `CLOUDFLARE_ACCOUNT_ID`）を環境変数に入れれば `wrangler` がそのまま使う。
-- 生成・Opus 5.5 と Fable 5.1 の比較・入管ページの生成・公開は未実行（鍵が入った新しいセッションで、2回目の手順のまま進められる）。
-- `pnpm install --frozen-lockfile` は pnpm-lock.yaml を「壊れている」として失敗する（`pnpm install` は通り、ロックファイルの変更は戻した）。
-- `vp check`・`vue-tsc -b`・`vp test`（72件）は通る。
+- Cloudflare への公開。`wrangler whoami` は「未認証」のまま。`CLOUDFLARE_API_TOKEN`（と `CLOUDFLARE_ACCOUNT_ID`）を**環境変数として**入れれば `wrangler` がそのまま使う。設定は、変えた後に始めたセッションにしか入らない。
+- `ANTHROPIC_API_KEY` も環境変数にはまだ入っていない（api.anthropic.com はプロキシを通らないので、ネットワークシークレットでは付かない。環境変数として入れる）。
+- `pnpm install --frozen-lockfile` は pnpm-lock.yaml を「壊れている」として失敗する（`pnpm install` は通る。ロックファイルの変更は戻している）。
 
 ## いまの状態
 
