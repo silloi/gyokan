@@ -96,6 +96,7 @@ async function openUrl(url: string) {
       via: res.fetchedVia,
       warnings: res.warnings,
     };
+    showFirstLevel();
   } catch (e) {
     if ((e as Error).name === "AbortError") return;
     error.value = e instanceof ApiRequestError ? e.message : "ページを読めませんでした";
@@ -115,6 +116,15 @@ function openText(text: string) {
     via: "paste",
     warnings: [],
   };
+  showFirstLevel();
+}
+
+const demoUrl = new URL("/demo/kamome-tennyu.html", location.origin).toString();
+
+// ページが開いたとき、つまみが 0（原文のみ）なら 1（ことば）にして、補足が付いたことがすぐ分かるようにする。
+// 読む人がすでに上げているときは、そのまま（ページを移っても位置を保つ）
+function showFirstLevel() {
+  if (level.value === 0) level.value = 1;
 }
 
 async function loadLevel(lv: Level, target: PageText, signal: AbortSignal) {
@@ -229,6 +239,11 @@ onMounted(() => {
               <li><b>文脈</b>：この文が言いたいこと、義務の強さ</li>
               <li><b>書かれていない前提</b>：日本人なら分かる前提・次にやること（推測を含む）</li>
             </ol>
+            <p class="try-demo">
+              <button type="button" class="demo" @click="openUrl(demoUrl)">
+                架空の区役所ページで試す
+              </button>
+            </p>
           </template>
         </div>
       </section>

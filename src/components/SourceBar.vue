@@ -12,8 +12,6 @@ watch(
   (v) => (url.value = v),
 );
 
-const demoUrl = new URL("/demo/kamome-tennyu.html", location.origin).toString();
-
 function submitUrl() {
   const v = url.value.trim();
   if (v) emit("openUrl", v);
@@ -21,11 +19,6 @@ function submitUrl() {
 function submitText() {
   const v = text.value.trim();
   if (v) emit("openText", v);
-}
-function openDemo() {
-  url.value = demoUrl;
-  mode.value = "url";
-  emit("openUrl", demoUrl);
 }
 </script>
 
@@ -38,7 +31,6 @@ function openDemo() {
       <button type="button" role="tab" :aria-selected="mode === 'paste'" @click="mode = 'paste'">
         文章を貼り付ける
       </button>
-      <button type="button" class="demo" @click="openDemo">架空の区役所ページで試す</button>
     </div>
     <form v-if="mode === 'url'" class="source-form" @submit.prevent="submitUrl">
       <input

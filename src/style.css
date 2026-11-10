@@ -106,11 +106,6 @@ textarea {
   border-color: var(--brand);
   font-weight: 700;
 }
-.source-tabs .demo {
-  margin-left: auto;
-  color: var(--brand);
-  text-decoration: underline;
-}
 .source-form {
   display: flex;
   gap: 8px;
@@ -331,6 +326,23 @@ textarea {
 }
 .levels-intro li {
   margin-bottom: 4px;
+}
+.try-demo {
+  margin-top: 24px;
+}
+.try-demo .demo {
+  padding: 10px 18px;
+  border: 1px solid var(--brand);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--brand);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.try-demo .demo:hover {
+  background: var(--brand);
+  color: var(--surface);
 }
 .loading {
   color: var(--muted);
