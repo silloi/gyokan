@@ -126,7 +126,8 @@ export interface PageResponse {
   finalUrl: string;
   title: string;
   html: string;
-  fetchedVia: "browser-rendering" | "fetch";
+  /** assets: 同梱のデモページ（自分自身のオリジン）を静的ファイルから直接読んだ */
+  fetchedVia: "browser-rendering" | "fetch" | "assets";
   /** Browser Rendering が使えずに fetch に切り替えた理由など */
   warnings: string[];
 }

@@ -21,7 +21,7 @@ interface LoadedPage {
   title: string;
   /** URL で開いたときの元のページ（貼り付けのときは無し） */
   sourceUrl?: string;
-  via: "browser-rendering" | "fetch" | "paste";
+  via: "browser-rendering" | "fetch" | "assets" | "paste";
   warnings: string[];
 }
 
@@ -57,6 +57,7 @@ const viaLabel = computed(() => {
   const via = page.value?.via;
   if (via === "browser-rendering") return "Browser Rendering で取得";
   if (via === "fetch") return "通常の取得（JavaScript なし）";
+  if (via === "assets") return "同梱の架空ページ";
   if (via === "paste") return "貼り付けた文章";
   return "";
 });
@@ -181,7 +182,7 @@ onMounted(() => {
         <span class="logo" aria-hidden="true">行間</span>
         <span class="brand-text">
           <strong>行間を読む <small lang="en">Read between the lines</small></strong>
-          <span>原文はそのままに、行と行のあいだに補足を</span>
+          <span>原文はそのままに。行と行のあいだに補足を。</span>
         </span>
       </div>
       <SourceBar :busy="loading" :url="currentUrl" @open-url="openUrl" @open-text="openText" />
@@ -217,10 +218,10 @@ onMounted(() => {
         <div v-else class="empty">
           <p v-if="loading" class="loading">ページを読み込んでいます…</p>
           <template v-else>
-            <h1>区役所や入管のページを、行間つきで読む</h1>
+            <h1>区役所や入管のページ、その「行間」を読む</h1>
             <p>
-              ページの URL
-              を入れるか、本文を貼り付けてください。原文は変えずに、つまみで補足の量を選べます。
+              ページの URL を入れるか、本文を貼り付けてください。<br />
+              原文は変えることなく、つまみで補足レベルを選べます。
             </p>
             <ol class="levels-intro">
               <li><b>ことば</b>：難しい語の言い換え</li>

@@ -115,8 +115,8 @@ const LEVELS: Level[] = [1, 2, 3, 4];
     </template>
 
     <footer class="caution">
-      補足は
-      AI（Claude）が作った参考情報で、公式の情報ではありません。手続きの前に、かならず窓口や公式のページで確かめてください。
+      補足は AI
+      が作った参考情報で、公式情報ではありません。手続きの前に、かならず窓口や公式のページで確かめてください。
       <a v-if="sourceUrl" :href="sourceUrl" target="_blank" rel="noopener noreferrer"
         >元のページを開く</a
       >

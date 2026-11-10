@@ -149,6 +149,30 @@ async function fetchDirect(target: URL, warnings: string[]): Promise<Fetched> {
   return { html, finalUrl: res.url || target.toString(), title };
 }
 
+/**
+ * 同梱のデモページ（自分自身のオリジン）を、静的ファイルの束縛から直接読む。
+ * Workers は自分自身の URL を fetch できず、Browser Rendering は起動の上限（429）で使えないことがあるため。
+ * `.html` から拡張子なしへの転送（Static Assets の既定）は、同じホストの中なら1回だけ追う。
+ */
+async function fetchSelfAsset(env: Env, target: URL): Promise<Fetched> {
+  let url = target;
+  for (let hop = 0; hop < 2; hop++) {
+    const res = await env.ASSETS.fetch(new Request(url.toString()));
+    if (res.status >= 300 && res.status < 400) {
+      const next = new URL(res.headers.get("location") ?? "", url);
+      if (next.hostname !== url.hostname) break;
+      url = next;
+      continue;
+    }
+    if (!res.ok)
+      throw new HttpError(502, "upstream_status", `ページが HTTP ${res.status} を返しました`);
+    const html = await res.text();
+    const title = /<title[^>]*>([^<]*)<\/title>/i.exec(html)?.[1]?.trim() ?? "";
+    return { html, finalUrl: url.toString(), title };
+  }
+  throw new HttpError(502, "upstream_status", "ページの転送先を読めませんでした");
+}
+
 export async function handlePage(request: Request, env: Env): Promise<Response> {
   const self = new URL(request.url);
   const target = parseTarget(self.searchParams.get("url"), env, self.hostname);
@@ -158,7 +182,12 @@ export async function handlePage(request: Request, env: Env): Promise<Response> 
   let fetched: Fetched;
   let via: PageResponse["fetchedVia"] = "browser-rendering";
   try {
-    fetched = await renderWithBrowser(env, target);
+    if (target.hostname.toLowerCase() === self.hostname.toLowerCase()) {
+      via = "assets";
+      fetched = await fetchSelfAsset(env, target);
+    } else {
+      fetched = await renderWithBrowser(env, target);
+    }
   } catch (e) {
     if (e instanceof HttpError) throw e; // ページ自体のエラー（404 など）はそのまま返す
     const brMessage = (e as Error).message.split("\n")[0];
