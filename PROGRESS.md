@@ -1,13 +1,24 @@
 # PROGRESS
 
-最終更新: 2026-11-05（提出締切 2026-11-08 20:00 JST）
+最終更新: 2026-11-10
 
 ## 位置づけ（11/5 決定）
 
-- Built with Claude: Japan 2026 には別のアプリ akapen を主に出す。行間は**控え**（akapen が間に合わないときに出す）。作り手の時間は akapen を優先する。
-- リポジトリは**公開済み**（https://github.com/silloi/gyokan）。
-- 控えとして出せる状態にするための残り: (1) Claude API で補足をその場で作る（キー待ち）、(2) 補足の根拠に公的な用語集を使う（済）、(3) Cloudflare に公開する（トークン待ち）。
+- Built with Claude: Japan 2026 には別のアプリ akapen（現「JAWS 日本語じょうず」）を主に出した。行間は**提出しなかった**（11/10 確認）。Web には公開する。
+- リポジトリは**公開済み**（https://github.com/silloi/gyokan）。**本番は https://gyokan.ni-hongo.workers.dev**（11/10 公開。下の「11/10 にしたこと」）。
+- 残っていた3つ（Claude API での生成・用語集・Cloudflare への公開）はすべて済んだ。
 - 費用は気にしない（作り手の判断）。1ページの費用の計測はしない。
+
+## 11/10 にしたこと（Cloudflare に公開）
+
+- **https://gyokan.ni-hongo.workers.dev** に公開した。Cloudflare のアカウントは `Ni Hongo`（JAWS 日本語じょうず と同じ）。Workers 1本（静的ファイルは Workers Static Assets、`/api/*` だけ Worker が先に受ける）。Pages ではなく Workers なのは、Browser Rendering・KV・レート制限の束縛が要るため。
+- KV `gyokan-cache`（`d42b1905caad4f21949252b9f65ab31d`）は wrangler が自動で作った。`ANTHROPIC_API_KEY` は `wrangler secret put` で入れた（値は標準入力から。ファイルやログに出していない）。
+- **確かめたこと（本番）:** 架空ページ（fixture から 4 レベル）、入管の「在留期間更新許可申請」「在留資格変更許可申請」で Claude の生成（1レベル 41〜103 秒、3 レベル並列でも成功。CPU 時間は 1 リクエスト 0.2〜0.5 秒）、2回目からはキャッシュで 4 秒以内に 4 レベル表示。
+- **直したこと:** 本番の Browser Rendering（ヘッドレス Chrome）は入管の CloudFront に **403** で拒まれる（UA を GyokanReader にしても。ヘッドレスの特徴で見分けている模様）。一方、通常の fetch は 200 で取れる。ヘッドレスが 4xx を受けたときは通常の取得に切り替えるようにした（`worker/page.ts`）。404 など本当に無いページは、通常の取得でも同じ状態が返るので、そこで止まる。
+- **分かったこと:** Browser Rendering は新しいブラウザの起動に 1 分あたりの上限があり、続けて開くと `429 Rate limit exceeded` で通常の取得に落ちる（画面に黄色の注意が出る。動作には支障なし）。入管のページは結局ほぼ通常の取得になる。
+- **このクラウドセッションから公開するときの注意:** セッションのプロキシは api.cloudflare.com への Authorization ヘッダーをアカウントのトークンで上書きする。wrangler のアセット送信だけは Cloudflare が発行する一時トークンを Authorization に入れるので、そのまま 401 になる。手元の `node_modules/wrangler` のアセット送信の fetch にだけ、プロキシを通さない dispatcher を付けて回避した（リポジトリには入れていない。`pnpm install` で元に戻る）。作り手の PC からは `CLOUDFLARE_API_TOKEN`・`CLOUDFLARE_ACCOUNT_ID=2e998ce6e8a59b4583b436cdfcdbc393` を入れて `vp run deploy` でそのまま通る。
+- 同じプロキシは、ブラウザ（Playwright の Chromium）から本番へ 30 秒を超える応答待ちをすると「upstream request failed」(502) で切る。curl では 103 秒でも切れない。本番の問題ではなくこのセッションの事情なので、ブラウザでの確認はキャッシュ済みのページで行った。
+- **補足の表示が速くなる変更（届いた順に出す・スキーマを細くする・書き直しを後回しにする）はまだ入れていない。** 初めてのページは 1〜2 分待つ。
 
 ## 11/5 にしたこと
 
@@ -25,11 +36,6 @@
 - Claude での生成の回数に、1日の上限（全体で1000回＝250ページ。悪用されたときの歯止め。`DAILY_GENERATIONS`、"0" で生成を止める）。
 - fixture・取り込んだ補足・キャッシュから返すときは数えない。Turnstile はダッシュボードでの設定が要るので入れない（「手作業の設定はしない」の方針）。
 - ローカルで、7回目のページ取得が 429 になることを確かめた。
-
-**まだできていないこと（このセッションでは鍵が無い）**
-
-- Claude API のキー（`ANTHROPIC_API_KEY`）がこのセッションに無い。前のセッションで取り込んだ入管ページの補足も、コンテナが変わって消えた（`local-notes/` と開発用 KV）。
-- Cloudflare: `wrangler whoami` は「未認証」。ネットワークシークレットのトークンが、このセッションの通信に付いていない。
 
 **Claude API で補足を作った（11/5 夜）**
 
@@ -53,10 +59,8 @@
 - Fable 5.1 はことば（L1）の補足がかなり多い（入管ページで1.5倍）。行間が混みやすい。
 - **推奨（11/5 提案のまま）:** その場の生成は **Opus 5.5**（入管ページで約1.5分。Fable 5.1 は約4.5分かかり、その場では待てない）。デモ用に前もって作るページは **Fable 5.1**（前提の質）。CLAUDE.md・`CLAUDE_MODEL` の既定は Opus 5.5 のまま変えない。
 
-**まだできていないこと**
+**メモ**
 
-- Cloudflare への公開。`wrangler whoami` は「未認証」のまま。`CLOUDFLARE_API_TOKEN`（と `CLOUDFLARE_ACCOUNT_ID`）を**環境変数として**入れれば `wrangler` がそのまま使う。設定は、変えた後に始めたセッションにしか入らない。
-- `ANTHROPIC_API_KEY` も環境変数にはまだ入っていない（api.anthropic.com はプロキシを通らないので、ネットワークシークレットでは付かない。環境変数として入れる）。
 - `pnpm install --frozen-lockfile` は pnpm-lock.yaml を「壊れている」として失敗する（`pnpm install` は通る。ロックファイルの変更は戻している）。
 
 ## いまの状態
@@ -171,10 +175,10 @@ URL を入れる → Browser Rendering（ヘッドレス Chrome）で取得 → 
 
 ## 次に決めてほしいこと
 
-1. **Cloudflare のトークン（11/5）。** まだセッションに届かない。Claude API はチャットで受け取ったキーで動いた（環境変数にはまだ入らない）。
+1. **（済 11/10）Cloudflare に公開した。** https://gyokan.ni-hongo.workers.dev
 2. **（決定 11/5）公開デモの守り方。** 上の「公開デモの守り」のとおり。
 3. **補足の中身の確認。** 入管ページの112件は Claude が作ったものです。とくに「前提」（特例期間、収入印紙の買い方、混雑、オンライン申請の準備など）は、作り手の目で確認してほしいです。下書きは `local-notes/drafts/isa-16-3.draft.json`（直したら `build-fixture.ts --strict` → `import-notes.ts`）。
-4. **デプロイ。** トークンが使えるようになったら `vp run deploy`（KV は wrangler が作る）→ `wrangler secret put ANTHROPIC_API_KEY`。
+4. **（済 11/10）デプロイ。** `vp run deploy` → `wrangler secret put ANTHROPIC_API_KEY`。
 5. **デモと評価に使うページ 10〜20 件の選定と、各サイトの利用規約の確認。** 新宿区の転入届ページは取得・文分割まで確認済み（補足は未作成）。
 6. **評価の正解データの形式と指標**（下に案）。
 7. **（決定）名前とライセンス。** 製品名は「行間を読む」、英語の副題は "Read between the lines"、プロジェクト名は `gyokan`。ライセンスは MIT（著作権者の名義は公開のときに）。

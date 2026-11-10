@@ -1,6 +1,6 @@
 # 行間を読む — Read between the lines
 
-プロジェクト名（リポジトリ・パッケージ・Cloudflare の Worker）は `gyokan` です。
+プロジェクト名（リポジトリ・パッケージ・Cloudflare の Worker）は `gyokan` です。**公開版: https://gyokan.ni-hongo.workers.dev**
 
 日本の公的機関（区役所・出入国在留管理庁など）や、公的な性格のサービスのウェブページを、**原文には一切手を加えずに**、行と行のあいだに「言い換え・本当の意味・文脈・書かれていない前提」を差し込んで読めるようにする Web アプリです。補足の量は「つまみ」で 0〜4 段階に選べます。
 
@@ -63,19 +63,19 @@ vpx scripts/import-notes.ts local-notes/<name>.annotations.json
 
 ### よく使うコマンド
 
-| コマンド                                                       | 内容                                                  |
-| -------------------------------------------------------------- | ----------------------------------------------------- |
-| `vp dev`                                                       | 開発サーバー（Vue と Worker を一緒に起動）            |
-| `vp check`                                                     | 整形（Oxfmt）・Lint（Oxlint）・型チェック（tsgolint） |
-| `vp exec vue-tsc -b`                                           | Vue SFC を含めた型チェック                            |
-| `vp test`                                                      | テスト（Vitest）                                      |
-| `vp build`                                                     | 本番ビルド（`dist/client` と `dist/gyokan`）          |
-| `vp run deploy`                                                | ビルドして Cloudflare にデプロイ                      |
-| `vpx scripts/segment-page.ts <HTML or URL> [--api <origin>]`   | ページを文分割して文 ID を表示                        |
-| `vpx scripts/annotate-page.ts <HTML or URL> --out x.json`      | Claude API で1ページ分の補足を生成                    |
-| `vpx scripts/build-fixture.ts <下書き.json> --strict`          | 補足の下書きを検証して fixture にする                 |
-| `vpx scripts/import-notes.ts <*.annotations.json>`             | 補足を開発用の KV に取り込む                          |
-| `vpx scripts/build-glossary.ts <yasashii-refs のディレクトリ>` | 公的な用語集から `shared/glossary/` を作り直す        |
+| コマンド                                                       | 内容                                                                                                                                                 |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `vp dev`                                                       | 開発サーバー（Vue と Worker を一緒に起動）                                                                                                           |
+| `vp check`                                                     | 整形（Oxfmt）・Lint（Oxlint）・型チェック（tsgolint）                                                                                                |
+| `vp exec vue-tsc -b`                                           | Vue SFC を含めた型チェック                                                                                                                           |
+| `vp test`                                                      | テスト（Vitest）                                                                                                                                     |
+| `vp build`                                                     | 本番ビルド（`dist/client` と `dist/gyokan`）                                                                                                         |
+| `vp run deploy`                                                | ビルドして Cloudflare にデプロイ（`CLOUDFLARE_API_TOKEN`・`CLOUDFLARE_ACCOUNT_ID` を環境変数に。初回のあと `wrangler secret put ANTHROPIC_API_KEY`） |
+| `vpx scripts/segment-page.ts <HTML or URL> [--api <origin>]`   | ページを文分割して文 ID を表示                                                                                                                       |
+| `vpx scripts/annotate-page.ts <HTML or URL> --out x.json`      | Claude API で1ページ分の補足を生成                                                                                                                   |
+| `vpx scripts/build-fixture.ts <下書き.json> --strict`          | 補足の下書きを検証して fixture にする                                                                                                                |
+| `vpx scripts/import-notes.ts <*.annotations.json>`             | 補足を開発用の KV に取り込む                                                                                                                         |
+| `vpx scripts/build-glossary.ts <yasashii-refs のディレクトリ>` | 公的な用語集から `shared/glossary/` を作り直す                                                                                                       |
 
 ## 仕組み
 

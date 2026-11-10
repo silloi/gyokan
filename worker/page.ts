@@ -94,8 +94,10 @@ async function renderWithBrowser(env: Env, target: URL): Promise<Fetched> {
         timeout: NAV_TIMEOUT_MS,
       });
       const status = response?.status() ?? 0;
-      if (status >= 400)
-        throw new HttpError(502, "upstream_status", `ページが HTTP ${status} を返しました`);
+      // ヘッドレスブラウザだけを拒むサイトがある（入管の CloudFront は本番の Browser Rendering に 403 を返す。
+      // 通常の fetch では 200）。HttpError にせず投げて、呼び出し元で通常の取得に切り替える。
+      // 本当に無いページ（404 など）は、通常の取得でも同じ状態が返るので、そこで HttpError になる
+      if (status >= 400) throw new Error(`ページが HTTP ${status} を返しました`);
       // JavaScript で本文を描くページのため、通信が落ち着くまで少し待つ（待ちすぎない）
       await page.waitForNetworkIdle({ idleTime: 500, timeout: 5_000 }).catch(() => undefined);
       return { html: await page.content(), finalUrl: page.url(), title: await page.title() };
